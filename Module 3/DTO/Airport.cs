@@ -13,6 +13,14 @@ namespace Module_3.DTO
         private string iATACode;
         private string name;
 
+        public Airport(string id, string countryid, string iatacode, string name)
+        {
+            this.id = id;
+            this.countryID = countryid;
+            this.iATACode = iatacode;
+            this.name = name;
+        }
+
         public string Id { get => id; set => id = value; }
         public string CountryID { get => countryID; set => countryID = value; }
         public string IATACode { get => iATACode; set => iATACode = value; }

@@ -58,7 +58,7 @@ namespace Module_3 {
         
         private global::System.Data.DataRelation relationFK_Tickets_CabinTypes;
         
-        private global::System.Data.DataRelation relationFK_Tickets_Schedules;
+        private global::System.Data.DataRelation relationFK_Tickets_Countries;
         
         private global::System.Data.DataRelation relationFK_Tickets_Users;
         
@@ -439,7 +439,7 @@ namespace Module_3 {
             this.relationFK_Schedules_Aircrafts = this.Relations["FK_Schedules_Aircrafts"];
             this.relationFK_Schedules_Routes = this.Relations["FK_Schedules_Routes"];
             this.relationFK_Tickets_CabinTypes = this.Relations["FK_Tickets_CabinTypes"];
-            this.relationFK_Tickets_Schedules = this.Relations["FK_Tickets_Schedules"];
+            this.relationFK_Tickets_Countries = this.Relations["FK_Tickets_Countries"];
             this.relationFK_Tickets_Users = this.Relations["FK_Tickets_Users"];
             this.relationFK_Users_Offices = this.Relations["FK_Users_Offices"];
             this.relationFK_Users_Roles = this.Relations["FK_Users_Roles"];
@@ -501,10 +501,10 @@ namespace Module_3 {
                         this.tableCabinTypes.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableTickets.CabinTypeIDColumn}, false);
             this.Relations.Add(this.relationFK_Tickets_CabinTypes);
-            this.relationFK_Tickets_Schedules = new global::System.Data.DataRelation("FK_Tickets_Schedules", new global::System.Data.DataColumn[] {
-                        this.tableSchedules.IDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableTickets.CabinTypeIDColumn}, false);
-            this.Relations.Add(this.relationFK_Tickets_Schedules);
+            this.relationFK_Tickets_Countries = new global::System.Data.DataRelation("FK_Tickets_Countries", new global::System.Data.DataColumn[] {
+                        this.tableCountries.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableTickets.PassportCountryIDColumn}, false);
+            this.Relations.Add(this.relationFK_Tickets_Countries);
             this.relationFK_Tickets_Users = new global::System.Data.DataRelation("FK_Tickets_Users", new global::System.Data.DataColumn[] {
                         this.tableUsers.IDColumn}, new global::System.Data.DataColumn[] {
                         this.tableTickets.UserIDColumn}, false);
@@ -3179,6 +3179,12 @@ namespace Module_3 {
             
             private global::System.Data.DataColumn columnPassportNumber;
             
+            private global::System.Data.DataColumn columnPassportCountryID;
+            
+            private global::System.Data.DataColumn columnBookingReference;
+            
+            private global::System.Data.DataColumn columnConfirmed;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public TicketsDataTable() {
@@ -3286,6 +3292,30 @@ namespace Module_3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn PassportCountryIDColumn {
+                get {
+                    return this.columnPassportCountryID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn BookingReferenceColumn {
+                get {
+                    return this.columnBookingReference;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ConfirmedColumn {
+                get {
+                    return this.columnConfirmed;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3321,7 +3351,7 @@ namespace Module_3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public TicketsRow AddTicketsRow(string ID, UsersRow parentUsersRowByFK_Tickets_Users, string ScheduleID, CabinTypesRow parentCabinTypesRowByFK_Tickets_CabinTypes, string Firstname, string Lastname, string Email, string Phone, int PassportNumber) {
+            public TicketsRow AddTicketsRow(string ID, UsersRow parentUsersRowByFK_Tickets_Users, string ScheduleID, CabinTypesRow parentCabinTypesRowByFK_Tickets_CabinTypes, string Firstname, string Lastname, string Email, string Phone, int PassportNumber, CountriesRow parentCountriesRowByFK_Tickets_Countries, string BookingReference, bool Confirmed) {
                 TicketsRow rowTicketsRow = ((TicketsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
@@ -3332,12 +3362,18 @@ namespace Module_3 {
                         Lastname,
                         Email,
                         Phone,
-                        PassportNumber};
+                        PassportNumber,
+                        null,
+                        BookingReference,
+                        Confirmed};
                 if ((parentUsersRowByFK_Tickets_Users != null)) {
                     columnValuesArray[1] = parentUsersRowByFK_Tickets_Users[0];
                 }
                 if ((parentCabinTypesRowByFK_Tickets_CabinTypes != null)) {
                     columnValuesArray[3] = parentCabinTypesRowByFK_Tickets_CabinTypes[0];
+                }
+                if ((parentCountriesRowByFK_Tickets_Countries != null)) {
+                    columnValuesArray[9] = parentCountriesRowByFK_Tickets_Countries[0];
                 }
                 rowTicketsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTicketsRow);
@@ -3377,6 +3413,9 @@ namespace Module_3 {
                 this.columnEmail = base.Columns["Email"];
                 this.columnPhone = base.Columns["Phone"];
                 this.columnPassportNumber = base.Columns["PassportNumber"];
+                this.columnPassportCountryID = base.Columns["PassportCountryID"];
+                this.columnBookingReference = base.Columns["BookingReference"];
+                this.columnConfirmed = base.Columns["Confirmed"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3400,6 +3439,12 @@ namespace Module_3 {
                 base.Columns.Add(this.columnPhone);
                 this.columnPassportNumber = new global::System.Data.DataColumn("PassportNumber", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPassportNumber);
+                this.columnPassportCountryID = new global::System.Data.DataColumn("PassportCountryID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPassportCountryID);
+                this.columnBookingReference = new global::System.Data.DataColumn("BookingReference", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBookingReference);
+                this.columnConfirmed = new global::System.Data.DataColumn("Confirmed", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnConfirmed);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AllowDBNull = false;
@@ -3415,6 +3460,9 @@ namespace Module_3 {
                 this.columnLastname.MaxLength = 100;
                 this.columnEmail.MaxLength = 100;
                 this.columnPhone.MaxLength = 15;
+                this.columnPassportCountryID.AllowDBNull = false;
+                this.columnPassportCountryID.MaxLength = 100;
+                this.columnBookingReference.MaxLength = 100;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4221,6 +4269,17 @@ namespace Module_3 {
                     return ((OfficesRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Offices_Countries"])));
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public TicketsRow[] GetTicketsRows() {
+                if ((this.Table.ChildRelations["FK_Tickets_Countries"] == null)) {
+                    return new TicketsRow[0];
+                }
+                else {
+                    return ((TicketsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Tickets_Countries"])));
+                }
+            }
         }
         
         /// <summary>
@@ -4674,17 +4733,6 @@ namespace Module_3 {
             public void SetConfirmedNull() {
                 this[this.tableSchedules.ConfirmedColumn] = global::System.Convert.DBNull;
             }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public TicketsRow[] GetTicketsRows() {
-                if ((this.Table.ChildRelations["FK_Tickets_Schedules"] == null)) {
-                    return new TicketsRow[0];
-                }
-                else {
-                    return ((TicketsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Tickets_Schedules"])));
-                }
-            }
         }
         
         /// <summary>
@@ -4827,6 +4875,49 @@ namespace Module_3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string PassportCountryID {
+                get {
+                    return ((string)(this[this.tableTickets.PassportCountryIDColumn]));
+                }
+                set {
+                    this[this.tableTickets.PassportCountryIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string BookingReference {
+                get {
+                    try {
+                        return ((string)(this[this.tableTickets.BookingReferenceColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'BookingReference\' in table \'Tickets\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTickets.BookingReferenceColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Confirmed {
+                get {
+                    try {
+                        return ((bool)(this[this.tableTickets.ConfirmedColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Confirmed\' in table \'Tickets\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTickets.ConfirmedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public CabinTypesRow CabinTypesRow {
                 get {
                     return ((CabinTypesRow)(this.GetParentRow(this.Table.ParentRelations["FK_Tickets_CabinTypes"])));
@@ -4838,12 +4929,12 @@ namespace Module_3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public SchedulesRow SchedulesRow {
+            public CountriesRow CountriesRow {
                 get {
-                    return ((SchedulesRow)(this.GetParentRow(this.Table.ParentRelations["FK_Tickets_Schedules"])));
+                    return ((CountriesRow)(this.GetParentRow(this.Table.ParentRelations["FK_Tickets_Countries"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Tickets_Schedules"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Tickets_Countries"]);
                 }
             }
             
@@ -4916,6 +5007,30 @@ namespace Module_3 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetPassportNumberNull() {
                 this[this.tableTickets.PassportNumberColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsBookingReferenceNull() {
+                return this.IsNull(this.tableTickets.BookingReferenceColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetBookingReferenceNull() {
+                this[this.tableTickets.BookingReferenceColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsConfirmedNull() {
+                return this.IsNull(this.tableTickets.ConfirmedColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetConfirmedNull() {
+                this[this.tableTickets.ConfirmedColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -5695,8 +5810,7 @@ SELECT ID, Name, MakeModel, TotalSeats, EconomySeats, BusinessSeats FROM Aircraf
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=DESKTOP-KVVMBTR\\SUDO;Initial Catalog=database_demo;Integrated Securit" +
-                "y=True";
+            this._connection.ConnectionString = global::Module_3.Properties.Settings.Default.connectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6086,8 +6200,7 @@ SELECT ID, CountryID, IATACode, Name FROM Airports WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=DESKTOP-KVVMBTR\\SUDO;Initial Catalog=database_demo;Integrated Securit" +
-                "y=True";
+            this._connection.ConnectionString = global::Module_3.Properties.Settings.Default.connectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6479,8 +6592,7 @@ SELECT ID, CountryID, IATACode, Name FROM Airports WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=DESKTOP-KVVMBTR\\SUDO;Initial Catalog=database_demo;Integrated Securit" +
-                "y=True";
+            this._connection.ConnectionString = global::Module_3.Properties.Settings.Default.connectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6820,8 +6932,7 @@ SELECT ID, CountryID, IATACode, Name FROM Airports WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=DESKTOP-KVVMBTR\\SUDO;Initial Catalog=database_demo;Integrated Securit" +
-                "y=True";
+            this._connection.ConnectionString = global::Module_3.Properties.Settings.Default.connectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7179,8 +7290,7 @@ SELECT ID, CountryID, Title, Phone, Contact FROM Offices WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=DESKTOP-KVVMBTR\\SUDO;Initial Catalog=database_demo;Integrated Securit" +
-                "y=True";
+            this._connection.ConnectionString = global::Module_3.Properties.Settings.Default.connectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7600,8 +7710,7 @@ SELECT ID, CountryID, Title, Phone, Contact FROM Offices WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=DESKTOP-KVVMBTR\\SUDO;Initial Catalog=database_demo;Integrated Securit" +
-                "y=True";
+            this._connection.ConnectionString = global::Module_3.Properties.Settings.Default.connectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7957,8 +8066,7 @@ SELECT ID, DepartureAirportID, ArrivalAirportID, Distance, FlightTime FROM Route
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=DESKTOP-KVVMBTR\\SUDO;Initial Catalog=database_demo;Integrated Securit" +
-                "y=True";
+            this._connection.ConnectionString = global::Module_3.Properties.Settings.Default.connectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8365,8 +8473,7 @@ SELECT ID, Date, Time, AircraftID, RouteID, FlightNumber, EconomyPrice, Confirme
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=DESKTOP-KVVMBTR\\SUDO;Initial Catalog=database_demo;Integrated Securit" +
-                "y=True";
+            this._connection.ConnectionString = global::Module_3.Properties.Settings.Default.connectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8815,10 +8922,13 @@ SELECT ID, Date, Time, AircraftID, RouteID, FlightNumber, EconomyPrice, Confirme
             tableMapping.ColumnMappings.Add("Email", "Email");
             tableMapping.ColumnMappings.Add("Phone", "Phone");
             tableMapping.ColumnMappings.Add("PassportNumber", "PassportNumber");
+            tableMapping.ColumnMappings.Add("PassportCountryID", "PassportCountryID");
+            tableMapping.ColumnMappings.Add("BookingReference", "BookingReference");
+            tableMapping.ColumnMappings.Add("Confirmed", "Confirmed");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Tickets] WHERE (([ID] = @Original_ID) AND ([UserID] = @Original_UserID) AND ([ScheduleID] = @Original_ScheduleID) AND ([CabinTypeID] = @Original_CabinTypeID) AND ((@IsNull_Firstname = 1 AND [Firstname] IS NULL) OR ([Firstname] = @Original_Firstname)) AND ((@IsNull_Lastname = 1 AND [Lastname] IS NULL) OR ([Lastname] = @Original_Lastname)) AND ((@IsNull_Email = 1 AND [Email] IS NULL) OR ([Email] = @Original_Email)) AND ((@IsNull_Phone = 1 AND [Phone] IS NULL) OR ([Phone] = @Original_Phone)) AND ((@IsNull_PassportNumber = 1 AND [PassportNumber] IS NULL) OR ([PassportNumber] = @Original_PassportNumber)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Tickets] WHERE (([ID] = @Original_ID) AND ([UserID] = @Original_UserID) AND ([ScheduleID] = @Original_ScheduleID) AND ([CabinTypeID] = @Original_CabinTypeID) AND ((@IsNull_Firstname = 1 AND [Firstname] IS NULL) OR ([Firstname] = @Original_Firstname)) AND ((@IsNull_Lastname = 1 AND [Lastname] IS NULL) OR ([Lastname] = @Original_Lastname)) AND ((@IsNull_Email = 1 AND [Email] IS NULL) OR ([Email] = @Original_Email)) AND ((@IsNull_Phone = 1 AND [Phone] IS NULL) OR ([Phone] = @Original_Phone)) AND ((@IsNull_PassportNumber = 1 AND [PassportNumber] IS NULL) OR ([PassportNumber] = @Original_PassportNumber)) AND ([PassportCountryID] = @Original_PassportCountryID) AND ((@IsNull_BookingReference = 1 AND [BookingReference] IS NULL) OR ([BookingReference] = @Original_BookingReference)) AND ((@IsNull_Confirmed = 1 AND [Confirmed] IS NULL) OR ([Confirmed] = @Original_Confirmed)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UserID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -8834,10 +8944,15 @@ SELECT ID, Date, Time, AircraftID, RouteID, FlightNumber, EconomyPrice, Confirme
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Phone", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Phone", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PassportNumber", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PassportNumber", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PassportNumber", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PassportNumber", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PassportCountryID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PassportCountryID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_BookingReference", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BookingReference", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BookingReference", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BookingReference", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Confirmed", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Confirmed", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Confirmed", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Confirmed", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Tickets] ([ID], [UserID], [ScheduleID], [CabinTypeID], [Firstname], [Lastname], [Email], [Phone], [PassportNumber]) VALUES (@ID, @UserID, @ScheduleID, @CabinTypeID, @Firstname, @Lastname, @Email, @Phone, @PassportNumber);
-SELECT ID, UserID, ScheduleID, CabinTypeID, Firstname, Lastname, Email, Phone, PassportNumber FROM Tickets WHERE (ID = @ID)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Tickets] ([ID], [UserID], [ScheduleID], [CabinTypeID], [Firstname], [Lastname], [Email], [Phone], [PassportNumber], [PassportCountryID], [BookingReference], [Confirmed]) VALUES (@ID, @UserID, @ScheduleID, @CabinTypeID, @Firstname, @Lastname, @Email, @Phone, @PassportNumber, @PassportCountryID, @BookingReference, @Confirmed);
+SELECT ID, UserID, ScheduleID, CabinTypeID, Firstname, Lastname, Email, Phone, PassportNumber, PassportCountryID, BookingReference, Confirmed FROM Tickets WHERE (ID = @ID)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -8848,10 +8963,13 @@ SELECT ID, UserID, ScheduleID, CabinTypeID, Firstname, Lastname, Email, Phone, P
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Email", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Email", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Phone", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Phone", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PassportNumber", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PassportNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PassportCountryID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PassportCountryID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BookingReference", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BookingReference", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Confirmed", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Confirmed", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Tickets] SET [ID] = @ID, [UserID] = @UserID, [ScheduleID] = @ScheduleID, [CabinTypeID] = @CabinTypeID, [Firstname] = @Firstname, [Lastname] = @Lastname, [Email] = @Email, [Phone] = @Phone, [PassportNumber] = @PassportNumber WHERE (([ID] = @Original_ID) AND ([UserID] = @Original_UserID) AND ([ScheduleID] = @Original_ScheduleID) AND ([CabinTypeID] = @Original_CabinTypeID) AND ((@IsNull_Firstname = 1 AND [Firstname] IS NULL) OR ([Firstname] = @Original_Firstname)) AND ((@IsNull_Lastname = 1 AND [Lastname] IS NULL) OR ([Lastname] = @Original_Lastname)) AND ((@IsNull_Email = 1 AND [Email] IS NULL) OR ([Email] = @Original_Email)) AND ((@IsNull_Phone = 1 AND [Phone] IS NULL) OR ([Phone] = @Original_Phone)) AND ((@IsNull_PassportNumber = 1 AND [PassportNumber] IS NULL) OR ([PassportNumber] = @Original_PassportNumber)));
-SELECT ID, UserID, ScheduleID, CabinTypeID, Firstname, Lastname, Email, Phone, PassportNumber FROM Tickets WHERE (ID = @ID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Tickets] SET [ID] = @ID, [UserID] = @UserID, [ScheduleID] = @ScheduleID, [CabinTypeID] = @CabinTypeID, [Firstname] = @Firstname, [Lastname] = @Lastname, [Email] = @Email, [Phone] = @Phone, [PassportNumber] = @PassportNumber, [PassportCountryID] = @PassportCountryID, [BookingReference] = @BookingReference, [Confirmed] = @Confirmed WHERE (([ID] = @Original_ID) AND ([UserID] = @Original_UserID) AND ([ScheduleID] = @Original_ScheduleID) AND ([CabinTypeID] = @Original_CabinTypeID) AND ((@IsNull_Firstname = 1 AND [Firstname] IS NULL) OR ([Firstname] = @Original_Firstname)) AND ((@IsNull_Lastname = 1 AND [Lastname] IS NULL) OR ([Lastname] = @Original_Lastname)) AND ((@IsNull_Email = 1 AND [Email] IS NULL) OR ([Email] = @Original_Email)) AND ((@IsNull_Phone = 1 AND [Phone] IS NULL) OR ([Phone] = @Original_Phone)) AND ((@IsNull_PassportNumber = 1 AND [PassportNumber] IS NULL) OR ([PassportNumber] = @Original_PassportNumber)) AND ([PassportCountryID] = @Original_PassportCountryID) AND ((@IsNull_BookingReference = 1 AND [BookingReference] IS NULL) OR ([BookingReference] = @Original_BookingReference)) AND ((@IsNull_Confirmed = 1 AND [Confirmed] IS NULL) OR ([Confirmed] = @Original_Confirmed)));
+SELECT ID, UserID, ScheduleID, CabinTypeID, Firstname, Lastname, Email, Phone, PassportNumber, PassportCountryID, BookingReference, Confirmed FROM Tickets WHERE (ID = @ID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -8862,6 +8980,9 @@ SELECT ID, UserID, ScheduleID, CabinTypeID, Firstname, Lastname, Email, Phone, P
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Email", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Email", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Phone", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Phone", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PassportNumber", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PassportNumber", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PassportCountryID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PassportCountryID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BookingReference", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BookingReference", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Confirmed", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Confirmed", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UserID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ScheduleID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ScheduleID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -8876,14 +8997,18 @@ SELECT ID, UserID, ScheduleID, CabinTypeID, Firstname, Lastname, Email, Phone, P
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Phone", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Phone", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_PassportNumber", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PassportNumber", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PassportNumber", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PassportNumber", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PassportCountryID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PassportCountryID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_BookingReference", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BookingReference", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BookingReference", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BookingReference", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Confirmed", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Confirmed", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Confirmed", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Confirmed", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=DESKTOP-KVVMBTR\\SUDO;Initial Catalog=database_demo;Integrated Securit" +
-                "y=True";
+            this._connection.ConnectionString = global::Module_3.Properties.Settings.Default.connectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8893,7 +9018,7 @@ SELECT ID, UserID, ScheduleID, CabinTypeID, Firstname, Lastname, Email, Phone, P
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT ID, UserID, ScheduleID, CabinTypeID, Firstname, Lastname, Email, Phone, Pa" +
-                "ssportNumber FROM dbo.Tickets";
+                "ssportNumber, PassportCountryID, BookingReference, Confirmed FROM dbo.Tickets";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -8954,7 +9079,7 @@ SELECT ID, UserID, ScheduleID, CabinTypeID, Firstname, Lastname, Email, Phone, P
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Original_ID, string Original_UserID, string Original_ScheduleID, string Original_CabinTypeID, string Original_Firstname, string Original_Lastname, string Original_Email, string Original_Phone, global::System.Nullable<int> Original_PassportNumber) {
+        public virtual int Delete(string Original_ID, string Original_UserID, string Original_ScheduleID, string Original_CabinTypeID, string Original_Firstname, string Original_Lastname, string Original_Email, string Original_Phone, global::System.Nullable<int> Original_PassportNumber, string Original_PassportCountryID, string Original_BookingReference, global::System.Nullable<bool> Original_Confirmed) {
             if ((Original_ID == null)) {
                 throw new global::System.ArgumentNullException("Original_ID");
             }
@@ -9019,6 +9144,28 @@ SELECT ID, UserID, ScheduleID, CabinTypeID, Firstname, Lastname, Email, Phone, P
                 this.Adapter.DeleteCommand.Parameters[12].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
+            if ((Original_PassportCountryID == null)) {
+                throw new global::System.ArgumentNullException("Original_PassportCountryID");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((string)(Original_PassportCountryID));
+            }
+            if ((Original_BookingReference == null)) {
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[16].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[16].Value = ((string)(Original_BookingReference));
+            }
+            if ((Original_Confirmed.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[18].Value = ((bool)(Original_Confirmed.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[18].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -9039,7 +9186,7 @@ SELECT ID, UserID, ScheduleID, CabinTypeID, Firstname, Lastname, Email, Phone, P
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string ID, string UserID, string ScheduleID, string CabinTypeID, string Firstname, string Lastname, string Email, string Phone, global::System.Nullable<int> PassportNumber) {
+        public virtual int Insert(string ID, string UserID, string ScheduleID, string CabinTypeID, string Firstname, string Lastname, string Email, string Phone, global::System.Nullable<int> PassportNumber, string PassportCountryID, string BookingReference, global::System.Nullable<bool> Confirmed) {
             if ((ID == null)) {
                 throw new global::System.ArgumentNullException("ID");
             }
@@ -9094,6 +9241,24 @@ SELECT ID, UserID, ScheduleID, CabinTypeID, Firstname, Lastname, Email, Phone, P
             else {
                 this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
+            if ((PassportCountryID == null)) {
+                throw new global::System.ArgumentNullException("PassportCountryID");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(PassportCountryID));
+            }
+            if ((BookingReference == null)) {
+                this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[10].Value = ((string)(BookingReference));
+            }
+            if ((Confirmed.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[11].Value = ((bool)(Confirmed.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -9124,6 +9289,9 @@ SELECT ID, UserID, ScheduleID, CabinTypeID, Firstname, Lastname, Email, Phone, P
                     string Email, 
                     string Phone, 
                     global::System.Nullable<int> PassportNumber, 
+                    string PassportCountryID, 
+                    string BookingReference, 
+                    global::System.Nullable<bool> Confirmed, 
                     string Original_ID, 
                     string Original_UserID, 
                     string Original_ScheduleID, 
@@ -9132,7 +9300,10 @@ SELECT ID, UserID, ScheduleID, CabinTypeID, Firstname, Lastname, Email, Phone, P
                     string Original_Lastname, 
                     string Original_Email, 
                     string Original_Phone, 
-                    global::System.Nullable<int> Original_PassportNumber) {
+                    global::System.Nullable<int> Original_PassportNumber, 
+                    string Original_PassportCountryID, 
+                    string Original_BookingReference, 
+                    global::System.Nullable<bool> Original_Confirmed) {
             if ((ID == null)) {
                 throw new global::System.ArgumentNullException("ID");
             }
@@ -9187,69 +9358,109 @@ SELECT ID, UserID, ScheduleID, CabinTypeID, Firstname, Lastname, Email, Phone, P
             else {
                 this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
+            if ((PassportCountryID == null)) {
+                throw new global::System.ArgumentNullException("PassportCountryID");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(PassportCountryID));
+            }
+            if ((BookingReference == null)) {
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(BookingReference));
+            }
+            if ((Confirmed.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((bool)(Confirmed.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
             if ((Original_ID == null)) {
                 throw new global::System.ArgumentNullException("Original_ID");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_ID));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_ID));
             }
             if ((Original_UserID == null)) {
                 throw new global::System.ArgumentNullException("Original_UserID");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_UserID));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_UserID));
             }
             if ((Original_ScheduleID == null)) {
                 throw new global::System.ArgumentNullException("Original_ScheduleID");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_ScheduleID));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_ScheduleID));
             }
             if ((Original_CabinTypeID == null)) {
                 throw new global::System.ArgumentNullException("Original_CabinTypeID");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_CabinTypeID));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Original_CabinTypeID));
             }
             if ((Original_Firstname == null)) {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(Original_Firstname));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(Original_Firstname));
             }
             if ((Original_Lastname == null)) {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Original_Lastname));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(Original_Lastname));
             }
             if ((Original_Email == null)) {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Original_Email));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((string)(Original_Email));
             }
             if ((Original_Phone == null)) {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Original_Phone));
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((string)(Original_Phone));
             }
             if ((Original_PassportNumber.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((int)(Original_PassportNumber.Value));
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((int)(Original_PassportNumber.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[25].Value = global::System.DBNull.Value;
+            }
+            if ((Original_PassportCountryID == null)) {
+                throw new global::System.ArgumentNullException("Original_PassportCountryID");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((string)(Original_PassportCountryID));
+            }
+            if ((Original_BookingReference == null)) {
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[28].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((string)(Original_BookingReference));
+            }
+            if ((Original_Confirmed.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((bool)(Original_Confirmed.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[30].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -9280,6 +9491,9 @@ SELECT ID, UserID, ScheduleID, CabinTypeID, Firstname, Lastname, Email, Phone, P
                     string Email, 
                     string Phone, 
                     global::System.Nullable<int> PassportNumber, 
+                    string PassportCountryID, 
+                    string BookingReference, 
+                    global::System.Nullable<bool> Confirmed, 
                     string Original_ID, 
                     string Original_UserID, 
                     string Original_ScheduleID, 
@@ -9288,8 +9502,11 @@ SELECT ID, UserID, ScheduleID, CabinTypeID, Firstname, Lastname, Email, Phone, P
                     string Original_Lastname, 
                     string Original_Email, 
                     string Original_Phone, 
-                    global::System.Nullable<int> Original_PassportNumber) {
-            return this.Update(Original_ID, UserID, ScheduleID, CabinTypeID, Firstname, Lastname, Email, Phone, PassportNumber, Original_ID, Original_UserID, Original_ScheduleID, Original_CabinTypeID, Original_Firstname, Original_Lastname, Original_Email, Original_Phone, Original_PassportNumber);
+                    global::System.Nullable<int> Original_PassportNumber, 
+                    string Original_PassportCountryID, 
+                    string Original_BookingReference, 
+                    global::System.Nullable<bool> Original_Confirmed) {
+            return this.Update(Original_ID, UserID, ScheduleID, CabinTypeID, Firstname, Lastname, Email, Phone, PassportNumber, PassportCountryID, BookingReference, Confirmed, Original_ID, Original_UserID, Original_ScheduleID, Original_CabinTypeID, Original_Firstname, Original_Lastname, Original_Email, Original_Phone, Original_PassportNumber, Original_PassportCountryID, Original_BookingReference, Original_Confirmed);
         }
     }
     
@@ -9492,8 +9709,7 @@ SELECT ID, RoleID, OfficeID, Email, Password, FirstName, LastName, Birthdate, Ac
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=DESKTOP-KVVMBTR\\SUDO;Initial Catalog=database_demo;Integrated Securit" +
-                "y=True";
+            this._connection.ConnectionString = global::Module_3.Properties.Settings.Default.connectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10261,21 +10477,21 @@ SELECT ID, RoleID, OfficeID, Email, Password, FirstName, LastName, Birthdate, Ac
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._routesTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Routes.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._routesTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._cabinTypesTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.CabinTypes.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._cabinTypesTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._routesTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Routes.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._routesTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -10355,19 +10571,19 @@ SELECT ID, RoleID, OfficeID, Email, Password, FirstName, LastName, Birthdate, Ac
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._routesTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Routes.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._routesTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._cabinTypesTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.CabinTypes.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._cabinTypesTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._routesTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Routes.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._routesTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -10413,19 +10629,19 @@ SELECT ID, RoleID, OfficeID, Email, Password, FirstName, LastName, Birthdate, Ac
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._cabinTypesTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.CabinTypes.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._cabinTypesTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._routesTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Routes.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._routesTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._cabinTypesTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.CabinTypes.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._cabinTypesTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }

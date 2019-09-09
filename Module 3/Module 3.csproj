@@ -48,6 +48,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\AircraftDAL.cs" />
+    <Compile Include="DAL\AirportDAL.cs" />
+    <Compile Include="DAL\CabinTypeDAL.cs" />
     <Compile Include="DAL\CountryDAL.cs" />
     <Compile Include="DAL\ScheduleDAL.cs" />
     <Compile Include="database_demoDataSet.Designer.cs">
@@ -65,6 +67,12 @@
     <Compile Include="DTO\Schedule.cs" />
     <Compile Include="DTO\Ticket.cs" />
     <Compile Include="DTO\User.cs" />
+    <Compile Include="GUI\Booking Confirmation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Booking Confirmation.Designer.cs">
+      <DependentUpon>Booking Confirmation.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Search for flights.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +81,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GUI\Booking Confirmation.resx">
+      <DependentUpon>Booking Confirmation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -116,6 +127,8 @@
   <ItemGroup>
     <None Include="Resources\search16px.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="BUL\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

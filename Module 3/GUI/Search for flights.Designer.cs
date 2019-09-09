@@ -274,6 +274,7 @@
             this.btnBookingFlight.TabIndex = 1;
             this.btnBookingFlight.Text = "Booking Flight";
             this.btnBookingFlight.UseVisualStyleBackColor = true;
+            this.btnBookingFlight.Click += new System.EventHandler(this.BtnBookingFlight_Click);
             // 
             // textBox1
             // 
@@ -290,6 +291,7 @@
             this.btnExit.TabIndex = 8;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.BtnExit_Click);
             // 
             // frmSearchForLights
             // 

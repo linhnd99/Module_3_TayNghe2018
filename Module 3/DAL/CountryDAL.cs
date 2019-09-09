@@ -15,6 +15,7 @@ namespace Module_3.DAL
 
         public static List<Country> GetAllCountries()
         {
+            sqlcon.Open();
             string sql = "SELECT (ID, Name) FROM Countries";
             SqlCommand cmd = new SqlCommand(sql, sqlcon);
             SqlDataReader rd = cmd.ExecuteReader();
@@ -24,6 +25,7 @@ namespace Module_3.DAL
                 Country temp = new Country(rd["ID"].ToString(), rd["Name"].ToString());
                 res.Add(temp);
             }
+            sqlcon.Close();
             return res;
         }
     }

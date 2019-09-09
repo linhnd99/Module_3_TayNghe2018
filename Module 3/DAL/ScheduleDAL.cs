@@ -15,6 +15,7 @@ namespace Module_3.DAL
 
         public static List<Schedule> GetAllSchedules ()
         {
+            sqlcon.Open();
             string sql = "SELECT (ID,Date,Time,AircraftID,RouteID,FlightNumber,EconomyPrice,Confirmed) FROM Schedules";
             SqlCommand cmd = new SqlCommand(sql, sqlcon);
             SqlDataReader rd = cmd.ExecuteReader();
@@ -24,11 +25,13 @@ namespace Module_3.DAL
                 Schedule one = new Schedule(rd["ID"].ToString(), rd["Date"].ToString(), rd["Time"].ToString(), rd["AircraftID"].ToString(), rd["RouteID"].ToString(), int.Parse(rd["FlightNumber"].ToString()), double.Parse(rd["EconomyPrice"].ToString()), bool.Parse(rd["Confirmed"].ToString()));
                 res.Add(one);
             }
+            sqlcon.Close();
             return res;
         }
 
         public static List<Schedule> SearchParameters(Dictionary<string,string> param)
         {
+            sqlcon.Open();
             string sql = "SELECT (ID,Date,Time,AircraftID,RouteID,FlightNumber,EconomyPrice,Confirmed) FROM Schedules WHERE ";
             bool check = false;
             foreach (string first in param.Keys)
@@ -47,6 +50,7 @@ namespace Module_3.DAL
                 Schedule one = new Schedule(rd["ID"].ToString(), rd["Date"].ToString(), rd["Time"].ToString(), rd["AircraftID"].ToString(), rd["RouteID"].ToString(), int.Parse(rd["FlightNumber"].ToString()), double.Parse(rd["EconomyPrice"].ToString()), bool.Parse(rd["Confirmed"].ToString()));
                 res.Add(one);
             }
+            sqlcon.Close();
             return res;
         }
     }

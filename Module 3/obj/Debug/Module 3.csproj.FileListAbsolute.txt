@@ -8,3 +8,14 @@ C:\Users\linhnd\Desktop\Module 3\Module 3\obj\Debug\Module 3.csproj.GenerateReso
 C:\Users\linhnd\Desktop\Module 3\Module 3\obj\Debug\Module 3.csproj.CoreCompileInputs.cache
 C:\Users\linhnd\Desktop\Module 3\Module 3\obj\Debug\Module 3.exe
 C:\Users\linhnd\Desktop\Module 3\Module 3\obj\Debug\Module 3.pdb
+C:\Users\linhnd\Desktop\Module_3_2018\Module 3\bin\Debug\Module 3.exe.config
+C:\Users\linhnd\Desktop\Module_3_2018\Module 3\bin\Debug\Module 3.exe
+C:\Users\linhnd\Desktop\Module_3_2018\Module 3\bin\Debug\Module 3.pdb
+C:\Users\linhnd\Desktop\Module_3_2018\Module 3\obj\Debug\Module 3.csprojAssemblyReference.cache
+C:\Users\linhnd\Desktop\Module_3_2018\Module 3\obj\Debug\Module_3.Properties.Resources.resources
+C:\Users\linhnd\Desktop\Module_3_2018\Module 3\obj\Debug\Module_3.frmSearchForLights.resources
+C:\Users\linhnd\Desktop\Module_3_2018\Module 3\obj\Debug\Module 3.csproj.GenerateResource.cache
+C:\Users\linhnd\Desktop\Module_3_2018\Module 3\obj\Debug\Module 3.csproj.CoreCompileInputs.cache
+C:\Users\linhnd\Desktop\Module_3_2018\Module 3\obj\Debug\Module 3.exe
+C:\Users\linhnd\Desktop\Module_3_2018\Module 3\obj\Debug\Module 3.pdb
+C:\Users\linhnd\Desktop\Module_3_2018\Module 3\obj\Debug\Module_3.GUI.frmBookingConfirmation.resources
