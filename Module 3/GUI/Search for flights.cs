@@ -52,6 +52,7 @@ namespace Module_3
                 return this.name;
             }
         }
+        
         public frmSearchForLights()
         {
             InitializeComponent();
@@ -59,6 +60,7 @@ namespace Module_3
             else dpkReturn.Enabled = false;
 
             FillDataToComboBox();
+            CreateDataGridView();
         }
 
         private void FillDataToComboBox()
@@ -75,10 +77,53 @@ namespace Module_3
                 cbCabinType.Items.Add(new CabinTypeComboBox(x));
             }
             cbCabinType.SelectedIndex = cbCabinType.FindString("Economy");
+            dpkOutbound.Format = DateTimePickerFormat.Custom;
+            dpkOutbound.CustomFormat = "dd/MM/yyyy";
+            dpkReturn.Format = DateTimePickerFormat.Custom;
+            dpkReturn.CustomFormat = "dd/MM/yyyy";
+            dpkReturn.Value = DateTime.Now;
+            dpkOutbound.Value = DateTime.Now;
         }
         private void btnApply_Click(object sender, EventArgs e)
         {
+            // Validate parameters
+            if (cbFrom.SelectedItem == null || cbTo.SelectedItem==null || cbCabinType.SelectedItem==null)
+            {
+                MessageBox.Show("Fields can not empty!", "Warning");
+            }
+            if (rdReturn.Checked && dpkReturn.Value < dpkOutbound.Value)
+            {
+                MessageBox.Show("Returning date is not after outbound date!", "Warning");
+            }
+            
+            //Search Outbound
+            // lấy hết những Route có DepartureID và ArrivalID trùng với cbFrom và cbTo, sau đó tra Schedules
+            // để lấy ra những Schedule có date phù hợp, trong đống Schedule đó tra bảng Aircrafts xem CabinType
+            // có còn chỗ hay không? trả về cho bảng Outbound thông tin của những thằng thỏa mãn điều kiện trên
 
+        }
+
+        private void CreateDataGridView()
+        {
+            dgvOutboundFlight.ColumnCount = 7;
+            dgvOutboundFlight.Columns[0].Name = "From";
+            dgvOutboundFlight.Columns[1].Name = "To";
+            dgvOutboundFlight.Columns[2].Name = "Date";
+            dgvOutboundFlight.Columns[3].Name = "Time";
+            dgvOutboundFlight.Columns[4].Name = "Flight number(s)";
+            dgvOutboundFlight.Columns[5].Name = "Cabin Price";
+            dgvOutboundFlight.Columns[6].Name = "Number of stops";
+            dgvOutboundFlight.AutoResizeColumns();
+
+            dgvReturnFlight.ColumnCount = 7;
+            dgvReturnFlight.Columns[0].Name = "From";
+            dgvReturnFlight.Columns[1].Name = "To";
+            dgvReturnFlight.Columns[2].Name = "Date";
+            dgvReturnFlight.Columns[3].Name = "Time";
+            dgvReturnFlight.Columns[4].Name = "Flight number(s)";
+            dgvReturnFlight.Columns[5].Name = "Cabin Price";
+            dgvReturnFlight.Columns[6].Name = "Number of stops";
+            dgvReturnFlight.AutoResizeColumns();
         }
 
         private void RdReturn_CheckedChanged(object sender, EventArgs e)
@@ -95,7 +140,7 @@ namespace Module_3
         private void BtnBookingFlight_Click(object sender, EventArgs e)
         {
             frmBookingConfirmation newFrm = new frmBookingConfirmation();
-            newFrm.Show();
+            newFrm.ShowDialog();
             //this.Visible = false;
             
         }

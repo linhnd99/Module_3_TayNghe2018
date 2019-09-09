@@ -19,3 +19,4 @@ C:\Users\linhnd\Desktop\Module_3_2018\Module 3\obj\Debug\Module 3.csproj.CoreCom
 C:\Users\linhnd\Desktop\Module_3_2018\Module 3\obj\Debug\Module 3.exe
 C:\Users\linhnd\Desktop\Module_3_2018\Module 3\obj\Debug\Module 3.pdb
 C:\Users\linhnd\Desktop\Module_3_2018\Module 3\obj\Debug\Module_3.GUI.frmBookingConfirmation.resources
+C:\Users\linhnd\Desktop\Module_3_2018\Module 3\obj\Debug\Module_3.GUI.frmBillingConfirmation.resources

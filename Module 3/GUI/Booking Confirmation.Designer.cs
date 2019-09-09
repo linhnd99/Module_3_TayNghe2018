@@ -475,6 +475,7 @@
             this.btnConfirmBooking.TabIndex = 14;
             this.btnConfirmBooking.Text = "Confirm booking";
             this.btnConfirmBooking.UseVisualStyleBackColor = true;
+            this.btnConfirmBooking.Click += new System.EventHandler(this.BtnConfirmBooking_Click);
             // 
             // frmBookingConfirmation
             // 

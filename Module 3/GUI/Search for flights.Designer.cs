@@ -47,14 +47,14 @@
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvReturnFlight = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnBookingFlight = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnExit = new System.Windows.Forms.Button();
             this.grbSearchParameters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOutboundFlight)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvReturnFlight)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -223,9 +223,9 @@
             this.checkBox1.AutoSize = true;
             this.checkBox1.Location = new System.Drawing.Point(595, 115);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(193, 17);
+            this.checkBox1.Size = new System.Drawing.Size(190, 17);
             this.checkBox1.TabIndex = 3;
-            this.checkBox1.Text = "Display three  days before and after";
+            this.checkBox1.Text = "Display three days before and after";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // checkBox2
@@ -233,9 +233,9 @@
             this.checkBox2.AutoSize = true;
             this.checkBox2.Location = new System.Drawing.Point(595, 306);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(193, 17);
+            this.checkBox2.Size = new System.Drawing.Size(190, 17);
             this.checkBox2.TabIndex = 6;
-            this.checkBox2.Text = "Display three  days before and after";
+            this.checkBox2.Text = "Display three days before and after";
             this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // label7
@@ -243,17 +243,17 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(13, 311);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(115, 13);
+            this.label7.Size = new System.Drawing.Size(100, 13);
             this.label7.TabIndex = 5;
-            this.label7.Text = "Outbound flight details:";
+            this.label7.Text = "Return flight details:";
             // 
-            // dataGridView1
+            // dgvReturnFlight
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 330);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(776, 150);
-            this.dataGridView1.TabIndex = 4;
+            this.dgvReturnFlight.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvReturnFlight.Location = new System.Drawing.Point(12, 330);
+            this.dgvReturnFlight.Name = "dgvReturnFlight";
+            this.dgvReturnFlight.Size = new System.Drawing.Size(776, 150);
+            this.dgvReturnFlight.TabIndex = 4;
             // 
             // groupBox1
             // 
@@ -302,7 +302,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvReturnFlight);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.dgvOutboundFlight);
@@ -313,7 +313,7 @@
             this.grbSearchParameters.ResumeLayout(false);
             this.grbSearchParameters.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOutboundFlight)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvReturnFlight)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -342,7 +342,7 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvReturnFlight;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnBookingFlight;
         private System.Windows.Forms.TextBox textBox1;

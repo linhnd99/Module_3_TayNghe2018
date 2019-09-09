@@ -23,5 +23,11 @@ namespace Module_3.GUI
             newFrm.Show();
             this.Close();
         }
+
+        private void BtnConfirmBooking_Click(object sender, EventArgs e)
+        {
+            frmBillingConfirmation frm2 = new frmBillingConfirmation();
+            frm2.ShowDialog();
+        }
     }
 }

@@ -67,6 +67,12 @@
     <Compile Include="DTO\Schedule.cs" />
     <Compile Include="DTO\Ticket.cs" />
     <Compile Include="DTO\User.cs" />
+    <Compile Include="GUI\Billing Confirmation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Billing Confirmation.Designer.cs">
+      <DependentUpon>Billing Confirmation.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Booking Confirmation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +87,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GUI\Billing Confirmation.resx">
+      <DependentUpon>Billing Confirmation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Booking Confirmation.resx">
       <DependentUpon>Booking Confirmation.cs</DependentUpon>
     </EmbeddedResource>
