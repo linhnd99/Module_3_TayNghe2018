@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Configuration;
 using System.Data.SqlClient;
 using Module_3.DTO;
+using System.Windows.Forms;
 
 namespace Module_3.DAL
 {
@@ -15,18 +16,26 @@ namespace Module_3.DAL
 
         public static List<Country> GetAllCountries()
         {
-            sqlcon.Open();
-            string sql = "SELECT (ID, Name) FROM Countries";
-            SqlCommand cmd = new SqlCommand(sql, sqlcon);
-            SqlDataReader rd = cmd.ExecuteReader();
-            List<Country> res = new List<Country>();
-            while (rd.Read())
+            try
             {
-                Country temp = new Country(rd["ID"].ToString(), rd["Name"].ToString());
-                res.Add(temp);
+                sqlcon.Open();
+                string sql = "SELECT (ID, Name) FROM Countries";
+                SqlCommand cmd = new SqlCommand(sql, sqlcon);
+                SqlDataReader rd = cmd.ExecuteReader();
+                List<Country> res = new List<Country>();
+                while (rd.Read())
+                {
+                    Country temp = new Country(rd["ID"].ToString(), rd["Name"].ToString());
+                    res.Add(temp);
+                }
+                sqlcon.Close();
+                return res;
             }
-            sqlcon.Close();
-            return res;
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error");
+            }
+            return null;
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Configuration;
 using System.Data.SqlClient;
 using Module_3.DTO;
+using System.Windows.Forms;
 
 namespace Module_3.DAL
 {
@@ -15,43 +16,82 @@ namespace Module_3.DAL
 
         public static List<Schedule> GetAllSchedules ()
         {
-            sqlcon.Open();
-            string sql = "SELECT (ID,Date,Time,AircraftID,RouteID,FlightNumber,EconomyPrice,Confirmed) FROM Schedules";
-            SqlCommand cmd = new SqlCommand(sql, sqlcon);
-            SqlDataReader rd = cmd.ExecuteReader();
-            List<Schedule> res = new List<Schedule>();
-            while (rd.Read())
+            try
             {
-                Schedule one = new Schedule(rd["ID"].ToString(), rd["Date"].ToString(), rd["Time"].ToString(), rd["AircraftID"].ToString(), rd["RouteID"].ToString(), int.Parse(rd["FlightNumber"].ToString()), double.Parse(rd["EconomyPrice"].ToString()), bool.Parse(rd["Confirmed"].ToString()));
-                res.Add(one);
+                sqlcon.Open();
+                string sql = "SELECT (ID,Date,Time,AircraftID,RouteID,FlightNumber,EconomyPrice,Confirmed) FROM Schedules";
+                SqlCommand cmd = new SqlCommand(sql, sqlcon);
+                SqlDataReader rd = cmd.ExecuteReader();
+                List<Schedule> res = new List<Schedule>();
+                while (rd.Read())
+                {
+                    Schedule one = new Schedule(rd["ID"].ToString(), rd["Date"].ToString(), rd["Time"].ToString(), rd["AircraftID"].ToString(), rd["RouteID"].ToString(), int.Parse(rd["FlightNumber"].ToString()), double.Parse(rd["EconomyPrice"].ToString()), bool.Parse(rd["Confirmed"].ToString()));
+                    res.Add(one);
+                }
+                sqlcon.Close();
+                return res;
             }
-            sqlcon.Close();
-            return res;
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error");
+            }
+            return null;
         }
 
-        public static List<Schedule> SearchParameters(Dictionary<string,string> param)
+        public static List<Schedule> GetScheduleWithParameters(Dictionary<string,string> param)
         {
-            sqlcon.Open();
-            string sql = "SELECT (ID,Date,Time,AircraftID,RouteID,FlightNumber,EconomyPrice,Confirmed) FROM Schedules WHERE ";
-            bool check = false;
-            foreach (string first in param.Keys)
+            try
             {
-                sql = sql + first + "=" + param[first] + " AND ";
-                check = true;
-            }
-            if (check) sql.Remove(sql.Length - 1 - 4, 4);
-            Console.WriteLine("search parameters sql : " + sql);
+                sqlcon.Open();
+                string sql = "SELECT (ID,Date,Time,AircraftID,RouteID,FlightNumber,EconomyPrice,Confirmed) FROM Schedules WHERE ";
+                bool check = false;
+                foreach (string first in param.Keys)
+                {
+                    sql = sql + first + "=" + param[first] + " AND ";
+                    check = true;
+                }
+                if (check) sql.Remove(sql.Length - 1 - 4, 4);
+                Console.WriteLine("search parameters sql : " + sql);
 
-            SqlCommand cmd = new SqlCommand(sql, sqlcon);
-            SqlDataReader rd = cmd.ExecuteReader();
-            List<Schedule> res = new List<Schedule>();
-            while (rd.Read())
-            {
-                Schedule one = new Schedule(rd["ID"].ToString(), rd["Date"].ToString(), rd["Time"].ToString(), rd["AircraftID"].ToString(), rd["RouteID"].ToString(), int.Parse(rd["FlightNumber"].ToString()), double.Parse(rd["EconomyPrice"].ToString()), bool.Parse(rd["Confirmed"].ToString()));
-                res.Add(one);
+                SqlCommand cmd = new SqlCommand(sql, sqlcon);
+                SqlDataReader rd = cmd.ExecuteReader();
+                List<Schedule> res = new List<Schedule>();
+                while (rd.Read())
+                {
+                    Schedule one = new Schedule(rd["ID"].ToString(), rd["Date"].ToString(), rd["Time"].ToString(), rd["AircraftID"].ToString(), rd["RouteID"].ToString(), int.Parse(rd["FlightNumber"].ToString()), double.Parse(rd["EconomyPrice"].ToString()), bool.Parse(rd["Confirmed"].ToString()));
+                    res.Add(one);
+                }
+                sqlcon.Close();
+                return res;
             }
-            sqlcon.Close();
-            return res;
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error");
+            }
+            return null;            
+        }
+
+        public static List<Schedule> GetScheduleWithRouteID(string routeID)
+        {
+            try
+            {
+                sqlcon.Open();
+                string sql = "SELECT(ID, Date, Time, AircraftID, RouteID, FlightNumber, EconomyPrice, Confirmed) FROM Schedules WHERE RouteID=" + routeID;
+                SqlCommand cmd = new SqlCommand(sql, sqlcon);
+                SqlDataReader rd = cmd.ExecuteReader();
+                List<Schedule> res = new List<Schedule>();
+                while(rd.Read())
+                {
+                    res.Add(new Schedule(rd["ID"].ToString(), rd["Date"].ToString(), rd["Time"].ToString(), rd["AircraftID"].ToString(), rd["RouteID"].ToString(), int.Parse(rd["FlightNumber"].ToString()), double.Parse(rd["EconomyPrice"].ToString()), bool.Parse(rd["Confirmed"].ToString())));
+                }
+                sqlcon.Close();
+                return res;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error");
+            }
+            return null;
         }
     }
 }

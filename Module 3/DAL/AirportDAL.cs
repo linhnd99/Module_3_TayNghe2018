@@ -15,32 +15,47 @@ namespace Module_3.DAL
         private static SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ToString());
         public static List<Airport> GetAllAirports()
         {
-            sqlcon.Open();
-            string sql = "SELECT * FROM Airports";
-            SqlCommand cmd = new SqlCommand(sql, sqlcon);
-            SqlDataReader rd = cmd.ExecuteReader();
-            List<Airport> res = new List<Airport>();
-            while (rd.Read())
+            try
             {
-                Airport one = new Airport(rd["ID"].ToString(), rd["CountryID"].ToString(), rd["IATACode"].ToString(), rd["Name"].ToString());
-                res.Add(one);
+                sqlcon.Open();
+                string sql = "SELECT * FROM Airports";
+                SqlCommand cmd = new SqlCommand(sql, sqlcon);
+                SqlDataReader rd = cmd.ExecuteReader();
+                List<Airport> res = new List<Airport>();
+                while (rd.Read())
+                {
+                    Airport one = new Airport(rd["ID"].ToString(), rd["CountryID"].ToString(), rd["IATACode"].ToString(), rd["Name"].ToString());
+                    res.Add(one);
+                }
+                sqlcon.Close();
+                return res;
             }
-            sqlcon.Close();
-            return res;
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error");
+            }
+            return null;
         }
 
         public static Airport GetAirportWithID(string id)
         {
-            sqlcon.Open();
-            string sql = "SELECT * FROM Airtports WHERE ID=" + id;
-            SqlCommand cmd = new SqlCommand(sql, sqlcon);
-            SqlDataReader rd = cmd.ExecuteReader();
-            while (rd.Read())
+            try
             {
+                sqlcon.Open();
+                string sql = "SELECT * FROM Airtports WHERE ID=" + id;
+                SqlCommand cmd = new SqlCommand(sql, sqlcon);
+                SqlDataReader rd = cmd.ExecuteReader();
+                while (rd.Read())
+                {
+                    sqlcon.Close();
+                    return new Airport(rd["ID"].ToString(), rd["CountryID"].ToString(), rd["IATACode"].ToString(), rd["Name"].ToString());
+                }
                 sqlcon.Close();
-                return new Airport(rd["ID"].ToString(), rd["CountryID"].ToString(), rd["IATACode"].ToString(), rd["Name"].ToString());
             }
-            sqlcon.Close();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error");
+            }
             return null;
         }
     }

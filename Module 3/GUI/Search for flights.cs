@@ -95,12 +95,13 @@ namespace Module_3
             {
                 MessageBox.Show("Returning date is not after outbound date!", "Warning");
             }
-            
-            //Search Outbound
-            // lấy hết những Route có DepartureID và ArrivalID trùng với cbFrom và cbTo, sau đó tra Schedules
-            // để lấy ra những Schedule có date phù hợp, trong đống Schedule đó tra bảng Aircrafts xem CabinType
-            // có còn chỗ hay không? trả về cho bảng Outbound thông tin của những thằng thỏa mãn điều kiện trên
 
+            //Search Outbound
+            // lấy hết những Route có DepartureID và ArrivalID trùng với cbFrom và cbTo, sau đó dùng RouteID tra Schedules
+            // để lấy ra những Schedule có date phù hợp, trong đống Schedule đó dùng AircraftID tra bảng Aircrafts xem CabinType
+            // có còn chỗ hay không? trả về cho bảng Outbound thông tin của những thằng thỏa mãn điều kiện trên
+            // SELECT ArrivalID, DepartID, Date, Time, FlightNumber, CabinType FROM Routes,Schedule,Aircraft 
+            // WHERE DepartID=departID and ArrivalID=arrivalID and is(DateFromAndTo)=OK and is(SeatsOK)=OK
         }
 
         private void CreateDataGridView()

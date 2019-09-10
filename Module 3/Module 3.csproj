@@ -136,8 +136,6 @@
   <ItemGroup>
     <None Include="Resources\search16px.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BUL\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
