@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -51,11 +66,13 @@
     <Compile Include="DAL\AirportDAL.cs" />
     <Compile Include="DAL\CabinTypeDAL.cs" />
     <Compile Include="DAL\CountryDAL.cs" />
+    <Compile Include="DAL\DBHelper.cs" />
+    <Compile Include="DAL\RouteDAL.cs" />
     <Compile Include="DAL\ScheduleDAL.cs" />
-    <Compile Include="database_demoDataSet.Designer.cs">
+    <Compile Include="DATABASE_DEMO.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>database_demoDataSet.xsd</DependentUpon>
+      <DependentUpon>DATABASE_DEMO.xsd</DependentUpon>
     </Compile>
     <Compile Include="DTO\Aircraft.cs" />
     <Compile Include="DTO\Airport.cs" />
@@ -106,16 +123,16 @@
     <EmbeddedResource Include="GUI\Search for flights.resx">
       <DependentUpon>Search for flights.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="database_demoDataSet.xsc">
-      <DependentUpon>database_demoDataSet.xsd</DependentUpon>
+    <None Include="DATABASE_DEMO.xsc">
+      <DependentUpon>DATABASE_DEMO.xsd</DependentUpon>
     </None>
-    <None Include="database_demoDataSet.xsd">
+    <None Include="DATABASE_DEMO.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>database_demoDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>DATABASE_DEMO.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="database_demoDataSet.xss">
-      <DependentUpon>database_demoDataSet.xsd</DependentUpon>
+    <None Include="DATABASE_DEMO.xss">
+      <DependentUpon>DATABASE_DEMO.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -136,6 +153,17 @@
   <ItemGroup>
     <None Include="Resources\search16px.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

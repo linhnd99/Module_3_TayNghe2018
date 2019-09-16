@@ -28,9 +28,9 @@ namespace Module_3.Properties {
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-KVVMBTR\\SUDO;Initial Catalog=database_demo;Integrated Securit" +
             "y=True")]
-        public string connectionString {
+        public string ConnectionStrings {
             get {
-                return ((string)(this["connectionString"]));
+                return ((string)(this["ConnectionStrings"]));
             }
         }
     }

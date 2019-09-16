@@ -12,12 +12,12 @@ namespace Module_3.DAL
 {
     class CountryDAL
     {
-        static SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ToString());
 
-        public static List<Country> GetAllCountries()
+        public List<Country> GetAllCountries()
         {
             try
             {
+                SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStrings"].ToString());
                 sqlcon.Open();
                 string sql = "SELECT (ID, Name) FROM Countries";
                 SqlCommand cmd = new SqlCommand(sql, sqlcon);

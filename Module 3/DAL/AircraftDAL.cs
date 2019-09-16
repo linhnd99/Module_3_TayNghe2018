@@ -10,8 +10,7 @@ namespace Module_3.DAL
 {
     class AircraftDAL
     {
-        SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ToString());
-        SqlCommand sqlcmd;
+        
 
     }
 }

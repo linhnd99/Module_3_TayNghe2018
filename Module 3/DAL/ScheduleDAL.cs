@@ -12,12 +12,11 @@ namespace Module_3.DAL
 {
     class ScheduleDAL
     {
-        private static SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ToString());
-
-        public static List<Schedule> GetAllSchedules ()
+        public List<Schedule> GetAllSchedules ()
         {
             try
             {
+                SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStrings"].ToString());
                 sqlcon.Open();
                 string sql = "SELECT (ID,Date,Time,AircraftID,RouteID,FlightNumber,EconomyPrice,Confirmed) FROM Schedules";
                 SqlCommand cmd = new SqlCommand(sql, sqlcon);
@@ -38,10 +37,11 @@ namespace Module_3.DAL
             return null;
         }
 
-        public static List<Schedule> GetScheduleWithParameters(Dictionary<string,string> param)
+        public List<Schedule> GetScheduleWithParameters(Dictionary<string,string> param)
         {
             try
             {
+                SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStrings"].ToString());
                 sqlcon.Open();
                 string sql = "SELECT (ID,Date,Time,AircraftID,RouteID,FlightNumber,EconomyPrice,Confirmed) FROM Schedules WHERE ";
                 bool check = false;
@@ -71,10 +71,11 @@ namespace Module_3.DAL
             return null;            
         }
 
-        public static List<Schedule> GetScheduleWithRouteID(string routeID)
+        public List<Schedule> GetScheduleWithRouteID(string routeID)
         {
             try
             {
+                SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStrings"].ToString());
                 sqlcon.Open();
                 string sql = "SELECT(ID, Date, Time, AircraftID, RouteID, FlightNumber, EconomyPrice, Confirmed) FROM Schedules WHERE RouteID=" + routeID;
                 SqlCommand cmd = new SqlCommand(sql, sqlcon);

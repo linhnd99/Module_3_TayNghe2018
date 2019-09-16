@@ -12,12 +12,11 @@ namespace Module_3.DAL
 {
     class RouteDAL
     {
-        static SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ToString());
-
-        public static List<Route> GetAllRoutes()
+        public List<Route> GetAllRoutes()
         {
             try
             {
+                SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStrings"].ToString());
                 sqlcon.Open();
                 string sql = "SELECT (ID,DepartureAirportID, ArrivalAirportID, Distance, FlightTime) FROM Routes";
                 SqlCommand cmd = new SqlCommand(sql, sqlcon);
@@ -37,10 +36,11 @@ namespace Module_3.DAL
             return null;
         }
 
-        public static Route GetRouteWithID(string routeID)
+        public Route GetRouteWithID(string routeID)
         {
             try
             {
+                SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStrings"].ToString());
                 sqlcon.Open();
                 string sql = "SELECT (ID,DepartureAirportID, ArrivalAirportID, Distance, FlightTime) FROM Routes WHERE ID=" + routeID;
                 SqlCommand cmd = new SqlCommand(sql, sqlcon);
@@ -60,10 +60,11 @@ namespace Module_3.DAL
             return null;
         }
 
-        public static List<Route> GetRouteWithDepartureAirportIDAndArrivalAirportID(string departureID, string arrivalID)
+        public List<Route> GetRouteWithDepartureAirportIDAndArrivalAirportID(string departureID, string arrivalID)
         {
             try
             {
+                SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStrings"].ToString());
                 sqlcon.Open();
                 string sql = "SELECT(ID, DepartureAirportID, ArrivalAirportID, Distance, FlightTime) FROM Routes WHERE DepartureAirportID=" + departureID + " ArrivalAirportID=" + arrivalID;
                 SqlCommand cmd = new SqlCommand(sql, sqlcon);

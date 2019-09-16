@@ -12,12 +12,11 @@ namespace Module_3.DAL
 {
     class CabinTypeDAL
     {
-        static SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ToString());
-
-        public static List<CabinType> GetAllCabinTypes()
+        public List<CabinType> GetAllCabinTypes()
         {
             try
             {
+                SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStrings"].ToString());
                 sqlcon.Open();
                 string sql = "SELECT * FROM CabinTypes";
                 SqlCommand cmd = new SqlCommand(sql, sqlcon);
@@ -37,10 +36,11 @@ namespace Module_3.DAL
             return null;
         }
 
-        public static CabinType GetCabinTypeWithId(string id)
+        public CabinType GetCabinTypeWithId(string id)
         {
             try
             {
+                SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStrings"].ToString());
                 sqlcon.Open();
                 string sql = "SELECT * FROM CabinTypes WHERE ID=" + id;
                 SqlCommand cmd = new SqlCommand(sql, sqlcon);

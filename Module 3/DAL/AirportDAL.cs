@@ -12,11 +12,11 @@ namespace Module_3.DAL
 {
     class AirportDAL
     {
-        private static SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["connectionString"].ToString());
-        public static List<Airport> GetAllAirports()
+        public List<Airport> GetAllAirports()
         {
             try
             {
+                SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStrings"].ToString());
                 sqlcon.Open();
                 string sql = "SELECT * FROM Airports";
                 SqlCommand cmd = new SqlCommand(sql, sqlcon);
@@ -37,10 +37,11 @@ namespace Module_3.DAL
             return null;
         }
 
-        public static Airport GetAirportWithID(string id)
+        public Airport GetAirportWithID(string id)
         {
             try
             {
+                SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStrings"].ToString());
                 sqlcon.Open();
                 string sql = "SELECT * FROM Airtports WHERE ID=" + id;
                 SqlCommand cmd = new SqlCommand(sql, sqlcon);
