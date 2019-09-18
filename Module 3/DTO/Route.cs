@@ -12,9 +12,13 @@ namespace Module_3.DTO
         private string departureAirportID;
         private string arrivalAirportID;
         private double distance;
-        private string flightTime;
+        private DateTime flightTime;
 
-        public Route(string id, string departureAirportID, string arrivalAirportID, double distance, string flightTime)
+        public Route()
+        {
+        }
+
+        public Route(string id, string departureAirportID, string arrivalAirportID, double distance, DateTime flightTime)
         {
             this.id = id;
             this.departureAirportID = departureAirportID;
@@ -27,6 +31,6 @@ namespace Module_3.DTO
         public string DepartureAirportID { get => departureAirportID; set => departureAirportID = value; }
         public string ArrivalAirportID { get => arrivalAirportID; set => arrivalAirportID = value; }
         public double Distance { get => distance; set => distance = value; }
-        public string FlightTime { get => flightTime; set => flightTime = value; }
+        public DateTime FlightTime { get => flightTime; set => flightTime = value; }
     }
 }

@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using Module_3.DTO;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace Module_3.DAL
 {
@@ -18,13 +19,13 @@ namespace Module_3.DAL
             {
                 SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStrings"].ToString());
                 sqlcon.Open();
-                string sql = "SELECT (ID,DepartureAirportID, ArrivalAirportID, Distance, FlightTime) FROM Routes";
+                string sql = "SELECT ID,DepartureAirportID, ArrivalAirportID, Distance, FlightTime FROM Routes";
                 SqlCommand cmd = new SqlCommand(sql, sqlcon);
                 SqlDataReader rd = cmd.ExecuteReader();
                 List<Route> res = new List<Route>();
                 while (rd.Read())
                 {
-                    res.Add(new Route(rd["ID"].ToString(), rd["DepartureAirportID"].ToString(), rd["ArrivalAirportID"].ToString(), Convert.ToDouble(rd["Distance"]), rd["FlightTime"].ToString()));
+                    res.Add(new Route(rd["ID"].ToString(), rd["DepartureAirportID"].ToString(), rd["ArrivalAirportID"].ToString(), Convert.ToDouble(rd["Distance"]), DateTime.ParseExact(rd["FlightTime"].ToString(), "dd/MM/yy", CultureInfo.InvariantCulture)));
                 }
                 sqlcon.Close();
                 return res;
@@ -48,7 +49,7 @@ namespace Module_3.DAL
                 while (rd.Read())
                 {
                     sqlcon.Close();
-                    return new Route(rd["ID"].ToString(), rd["DepartureAirportID"].ToString(), rd["ArrivalAirportID"].ToString(), Convert.ToDouble(rd["Distance"]), rd["FlightTime"].ToString());
+                    return new Route(rd["ID"].ToString(), rd["DepartureAirportID"].ToString(), rd["ArrivalAirportID"].ToString(), Convert.ToDouble(rd["Distance"]), DateTime.ParseExact(rd["FlightTime"].ToString(), "hh:mm:ss dd/MM/yy", CultureInfo.InvariantCulture));
                 }
                 sqlcon.Close();
                 return null;
@@ -60,19 +61,21 @@ namespace Module_3.DAL
             return null;
         }
 
-        public List<Route> GetRouteWithDepartureAirportIDAndArrivalAirportID(string departureID, string arrivalID)
+        public Route GetRouteWithDepartureAirportIDAndArrivalAirportID(string departureID, string arrivalID)
         {
             try
             {
                 SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStrings"].ToString());
                 sqlcon.Open();
-                string sql = "SELECT(ID, DepartureAirportID, ArrivalAirportID, Distance, FlightTime) FROM Routes WHERE DepartureAirportID=" + departureID + " ArrivalAirportID=" + arrivalID;
+                string sql = "SELECT(ID, DepartureAirportID, ArrivalAirportID, Distance, FlightTime) FROM Routes WHERE DepartureAirportID=" + departureID + " and ArrivalAirportID=" + arrivalID;
                 SqlCommand cmd = new SqlCommand(sql, sqlcon);
                 SqlDataReader rd = cmd.ExecuteReader();
-                List<Route> res = new List<Route>();
+                //List<Route> res = new List<Route>();
+                Route res = new Route();
                 while (rd.Read())
                 {
-                    res.Add(new Route(rd["ID"].ToString(), rd["DepartureAirportID"].ToString(), rd["ArrivalAirportID"].ToString(), Convert.ToDouble(rd["Distance"]), rd["FlightTime"].ToString()));
+                    //res.Add(new Route(rd["ID"].ToString(), rd["DepartureAirportID"].ToString(), rd["ArrivalAirportID"].ToString(), Convert.ToDouble(rd["Distance"]), DateTime.ParseExact(rd["FlightTime"].ToString(),"hh:mm:ss dd/MM/yy", CultureInfo.InvariantCulture)));
+                    res = new Route(rd["ID"].ToString(), rd["DepartureAirportID"].ToString(), rd["ArrivalAirportID"].ToString(), Convert.ToDouble(rd["Distance"]), DateTime.ParseExact(rd["FlightTime"].ToString(), "hh:mm:ss dd/MM/yy", CultureInfo.InvariantCulture));
                 }
                 sqlcon.Close();
                 return res;

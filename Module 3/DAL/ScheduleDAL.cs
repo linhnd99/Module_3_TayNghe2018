@@ -24,7 +24,7 @@ namespace Module_3.DAL
                 List<Schedule> res = new List<Schedule>();
                 while (rd.Read())
                 {
-                    Schedule one = new Schedule(rd["ID"].ToString(), rd["Date"].ToString(), rd["Time"].ToString(), rd["AircraftID"].ToString(), rd["RouteID"].ToString(), int.Parse(rd["FlightNumber"].ToString()), double.Parse(rd["EconomyPrice"].ToString()), bool.Parse(rd["Confirmed"].ToString()));
+                    Schedule one = new Schedule(rd["ID"].ToString(), DateTime.Parse(rd["Date"].ToString()), DateTime.Parse(rd["Time"].ToString()), rd["AircraftID"].ToString(), rd["RouteID"].ToString(), int.Parse(rd["FlightNumber"].ToString()), double.Parse(rd["EconomyPrice"].ToString()), bool.Parse(rd["Confirmed"].ToString()));
                     res.Add(one);
                 }
                 sqlcon.Close();
@@ -58,7 +58,7 @@ namespace Module_3.DAL
                 List<Schedule> res = new List<Schedule>();
                 while (rd.Read())
                 {
-                    Schedule one = new Schedule(rd["ID"].ToString(), rd["Date"].ToString(), rd["Time"].ToString(), rd["AircraftID"].ToString(), rd["RouteID"].ToString(), int.Parse(rd["FlightNumber"].ToString()), double.Parse(rd["EconomyPrice"].ToString()), bool.Parse(rd["Confirmed"].ToString()));
+                    Schedule one = new Schedule(rd["ID"].ToString(), DateTime.Parse(rd["Date"].ToString()), DateTime.Parse(rd["Time"].ToString()), rd["AircraftID"].ToString(), rd["RouteID"].ToString(), int.Parse(rd["FlightNumber"].ToString()), double.Parse(rd["EconomyPrice"].ToString()), bool.Parse(rd["Confirmed"].ToString()));
                     res.Add(one);
                 }
                 sqlcon.Close();
@@ -83,7 +83,7 @@ namespace Module_3.DAL
                 List<Schedule> res = new List<Schedule>();
                 while(rd.Read())
                 {
-                    res.Add(new Schedule(rd["ID"].ToString(), rd["Date"].ToString(), rd["Time"].ToString(), rd["AircraftID"].ToString(), rd["RouteID"].ToString(), int.Parse(rd["FlightNumber"].ToString()), double.Parse(rd["EconomyPrice"].ToString()), bool.Parse(rd["Confirmed"].ToString())));
+                    res.Add(new Schedule(rd["ID"].ToString(), DateTime.Parse(rd["Date"].ToString()), DateTime.Parse(rd["Time"].ToString()), rd["AircraftID"].ToString(), rd["RouteID"].ToString(), int.Parse(rd["FlightNumber"].ToString()), double.Parse(rd["EconomyPrice"].ToString()), bool.Parse(rd["Confirmed"].ToString())));
                 }
                 sqlcon.Close();
                 return res;
