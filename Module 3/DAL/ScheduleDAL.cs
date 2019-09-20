@@ -18,7 +18,7 @@ namespace Module_3.DAL
             {
                 SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStrings"].ToString());
                 sqlcon.Open();
-                string sql = "SELECT (ID,Date,Time,AircraftID,RouteID,FlightNumber,EconomyPrice,Confirmed) FROM Schedules";
+                string sql = "SELECT ID,Date,Time,AircraftID,RouteID,FlightNumber,EconomyPrice,Confirmed FROM Schedules";
                 SqlCommand cmd = new SqlCommand(sql, sqlcon);
                 SqlDataReader rd = cmd.ExecuteReader();
                 List<Schedule> res = new List<Schedule>();
@@ -43,15 +43,14 @@ namespace Module_3.DAL
             {
                 SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStrings"].ToString());
                 sqlcon.Open();
-                string sql = "SELECT (ID,Date,Time,AircraftID,RouteID,FlightNumber,EconomyPrice,Confirmed) FROM Schedules WHERE ";
+                string sql = "SELECT ID,Date,Time,AircraftID,RouteID,FlightNumber,EconomyPrice,Confirmed FROM Schedules WHERE ";
                 bool check = false;
                 foreach (string first in param.Keys)
                 {
-                    sql = sql + first + "=" + param[first] + " AND ";
+                    sql = sql + first + "='" + param[first] + "' AND ";
                     check = true;
                 }
                 if (check) sql.Remove(sql.Length - 1 - 4, 4);
-                Console.WriteLine("search parameters sql : " + sql);
 
                 SqlCommand cmd = new SqlCommand(sql, sqlcon);
                 SqlDataReader rd = cmd.ExecuteReader();
@@ -77,7 +76,7 @@ namespace Module_3.DAL
             {
                 SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStrings"].ToString());
                 sqlcon.Open();
-                string sql = "SELECT(ID, Date, Time, AircraftID, RouteID, FlightNumber, EconomyPrice, Confirmed) FROM Schedules WHERE RouteID=" + routeID;
+                string sql = "SELECT ID, Date, Time, AircraftID, RouteID, FlightNumber, EconomyPrice, Confirmed FROM Schedules WHERE RouteID = '" + routeID+"'";
                 SqlCommand cmd = new SqlCommand(sql, sqlcon);
                 SqlDataReader rd = cmd.ExecuteReader();
                 List<Schedule> res = new List<Schedule>();

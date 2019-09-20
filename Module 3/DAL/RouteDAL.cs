@@ -25,7 +25,10 @@ namespace Module_3.DAL
                 List<Route> res = new List<Route>();
                 while (rd.Read())
                 {
-                    res.Add(new Route(rd["ID"].ToString(), rd["DepartureAirportID"].ToString(), rd["ArrivalAirportID"].ToString(), Convert.ToDouble(rd["Distance"]), DateTime.ParseExact(rd["FlightTime"].ToString(), "dd/MM/yy", CultureInfo.InvariantCulture)));
+                    DateTime temp = Convert.ToDateTime(rd["FlightTime"]);
+                    //DateTime.ParseExact(rd["FlightTime"].ToString(), "dd/MM/yy", CultureInfo.InvariantCulture)
+                    res.Add(new Route(rd["ID"].ToString(), rd["DepartureAirportID"].ToString(), rd["ArrivalAirportID"].ToString(), Convert.ToDouble(rd["Distance"]), temp));
+                    
                 }
                 sqlcon.Close();
                 return res;
@@ -43,7 +46,7 @@ namespace Module_3.DAL
             {
                 SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStrings"].ToString());
                 sqlcon.Open();
-                string sql = "SELECT (ID,DepartureAirportID, ArrivalAirportID, Distance, FlightTime) FROM Routes WHERE ID=" + routeID;
+                string sql = "SELECT (ID,DepartureAirportID, ArrivalAirportID, Distance, FlightTime) FROM Routes WHERE ID='" + routeID+"'";
                 SqlCommand cmd = new SqlCommand(sql, sqlcon);
                 SqlDataReader rd = cmd.ExecuteReader();
                 while (rd.Read())
@@ -67,7 +70,7 @@ namespace Module_3.DAL
             {
                 SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStrings"].ToString());
                 sqlcon.Open();
-                string sql = "SELECT(ID, DepartureAirportID, ArrivalAirportID, Distance, FlightTime) FROM Routes WHERE DepartureAirportID=" + departureID + " and ArrivalAirportID=" + arrivalID;
+                string sql = "SELECT ID, DepartureAirportID, ArrivalAirportID, Distance, FlightTime FROM Routes WHERE DepartureAirportID='" + departureID + "' and ArrivalAirportID='" + arrivalID+"'";
                 SqlCommand cmd = new SqlCommand(sql, sqlcon);
                 SqlDataReader rd = cmd.ExecuteReader();
                 //List<Route> res = new List<Route>();
@@ -75,7 +78,8 @@ namespace Module_3.DAL
                 while (rd.Read())
                 {
                     //res.Add(new Route(rd["ID"].ToString(), rd["DepartureAirportID"].ToString(), rd["ArrivalAirportID"].ToString(), Convert.ToDouble(rd["Distance"]), DateTime.ParseExact(rd["FlightTime"].ToString(),"hh:mm:ss dd/MM/yy", CultureInfo.InvariantCulture)));
-                    res = new Route(rd["ID"].ToString(), rd["DepartureAirportID"].ToString(), rd["ArrivalAirportID"].ToString(), Convert.ToDouble(rd["Distance"]), DateTime.ParseExact(rd["FlightTime"].ToString(), "hh:mm:ss dd/MM/yy", CultureInfo.InvariantCulture));
+                    DateTime temp = Convert.ToDateTime(rd["FlightTime"]);
+                    res = new Route(rd["ID"].ToString(), rd["DepartureAirportID"].ToString(), rd["ArrivalAirportID"].ToString(), Convert.ToDouble(rd["Distance"]), temp);
                 }
                 sqlcon.Close();
                 return res;

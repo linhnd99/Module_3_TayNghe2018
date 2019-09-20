@@ -291,6 +291,11 @@ namespace Module_3
             //xây dựng danh sách kề
             allRoute = routeDAL.GetAllRoutes();
             edge = new List<List<int>>();
+            for (int i=0;i<=allAirport.Count;i++)
+            {
+                List<int> temp = new List<int>();
+                edge.Add(temp);
+            }
             for (int i = 0; i < allRoute.Count; i++)
             {
                 int uu = mapAirport[allRoute[i].DepartureAirportID];
@@ -301,8 +306,8 @@ namespace Module_3
             int t = mapAirport[param["ArrivalAirportID"]];
 
             allTrack = new List<List<int>>();
-            kt = new bool[10];
-            track = new int[10];
+            kt = new bool[10000];
+            track = new int[10000];
             dfs(1, s, t);
             // allTrack là List các đường đi từ s->t, ví dụ 1-3-2-4-5
             List<FlightDetail> listFlightDetail = new List<FlightDetail>();
@@ -379,7 +384,7 @@ namespace Module_3
                 if (kt[edge[u][j]]==false)
                 {
                     kt[edge[u][j]] = true;
-                    dfs(i + 1, edge[u][i], t);
+                    dfs(i + 1, edge[u][j], t);
                     kt[edge[u][j]] = false;
                 }
         }
