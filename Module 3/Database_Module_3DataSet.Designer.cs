@@ -20,9 +20,9 @@ namespace Module_3 {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("DATABASE_DEMO")]
+    [global::System.Xml.Serialization.XmlRootAttribute("Database_Module_3DataSet")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class DATABASE_DEMO : global::System.Data.DataSet {
+    public partial class Database_Module_3DataSet : global::System.Data.DataSet {
         
         private AircraftsDataTable tableAircrafts;
         
@@ -72,7 +72,7 @@ namespace Module_3 {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public DATABASE_DEMO() {
+        public Database_Module_3DataSet() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -83,7 +83,7 @@ namespace Module_3 {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        protected DATABASE_DEMO(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected Database_Module_3DataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -286,7 +286,7 @@ namespace Module_3 {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            DATABASE_DEMO cln = ((DATABASE_DEMO)(base.Clone()));
+            Database_Module_3DataSet cln = ((Database_Module_3DataSet)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -451,9 +451,9 @@ namespace Module_3 {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "DATABASE_DEMO";
+            this.DataSetName = "Database_Module_3DataSet";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/DATABASE_DEMO.xsd";
+            this.Namespace = "http://tempuri.org/Database_Module_3DataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableAircrafts = new AircraftsDataTable();
@@ -597,7 +597,7 @@ namespace Module_3 {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            DATABASE_DEMO ds = new DATABASE_DEMO();
+            Database_Module_3DataSet ds = new Database_Module_3DataSet();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -948,7 +948,7 @@ namespace Module_3 {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DATABASE_DEMO ds = new DATABASE_DEMO();
+                Database_Module_3DataSet ds = new Database_Module_3DataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1257,7 +1257,7 @@ namespace Module_3 {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DATABASE_DEMO ds = new DATABASE_DEMO();
+                Database_Module_3DataSet ds = new Database_Module_3DataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1532,7 +1532,7 @@ namespace Module_3 {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DATABASE_DEMO ds = new DATABASE_DEMO();
+                Database_Module_3DataSet ds = new Database_Module_3DataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1807,7 +1807,7 @@ namespace Module_3 {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DATABASE_DEMO ds = new DATABASE_DEMO();
+                Database_Module_3DataSet ds = new Database_Module_3DataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2131,7 +2131,7 @@ namespace Module_3 {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DATABASE_DEMO ds = new DATABASE_DEMO();
+                Database_Module_3DataSet ds = new Database_Module_3DataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2406,7 +2406,7 @@ namespace Module_3 {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DATABASE_DEMO ds = new DATABASE_DEMO();
+                Database_Module_3DataSet ds = new Database_Module_3DataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2592,7 +2592,7 @@ namespace Module_3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public RoutesRow AddRoutesRow(string ID, AirportsRow parentAirportsRowByFK_Routes_Airports, AirportsRow parentAirportsRowByFK_Routes_Users, double Distance, System.DateTime FlightTime) {
+            public RoutesRow AddRoutesRow(string ID, AirportsRow parentAirportsRowByFK_Routes_Airports, AirportsRow parentAirportsRowByFK_Routes_Users, double Distance, System.TimeSpan FlightTime) {
                 RoutesRow rowRoutesRow = ((RoutesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
@@ -2653,7 +2653,7 @@ namespace Module_3 {
                 base.Columns.Add(this.columnArrivalAirportID);
                 this.columnDistance = new global::System.Data.DataColumn("Distance", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDistance);
-                this.columnFlightTime = new global::System.Data.DataColumn("FlightTime", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                this.columnFlightTime = new global::System.Data.DataColumn("FlightTime", typeof(global::System.TimeSpan), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFlightTime);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
@@ -2733,7 +2733,7 @@ namespace Module_3 {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DATABASE_DEMO ds = new DATABASE_DEMO();
+                Database_Module_3DataSet ds = new Database_Module_3DataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -3102,7 +3102,7 @@ namespace Module_3 {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DATABASE_DEMO ds = new DATABASE_DEMO();
+                Database_Module_3DataSet ds = new Database_Module_3DataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -3540,7 +3540,7 @@ namespace Module_3 {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DATABASE_DEMO ds = new DATABASE_DEMO();
+                Database_Module_3DataSet ds = new Database_Module_3DataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -3925,7 +3925,7 @@ namespace Module_3 {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                DATABASE_DEMO ds = new DATABASE_DEMO();
+                Database_Module_3DataSet ds = new Database_Module_3DataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -4537,9 +4537,9 @@ namespace Module_3 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public System.DateTime FlightTime {
+            public System.TimeSpan FlightTime {
                 get {
-                    return ((global::System.DateTime)(this[this.tableRoutes.FlightTimeColumn]));
+                    return ((global::System.TimeSpan)(this[this.tableRoutes.FlightTimeColumn]));
                 }
                 set {
                     this[this.tableRoutes.FlightTimeColumn] = value;
@@ -5667,7 +5667,7 @@ namespace Module_3 {
         }
     }
 }
-namespace Module_3.DATABASE_DEMOTableAdapters {
+namespace Module_3.Database_Module_3DataSetTableAdapters {
     
     
     /// <summary>
@@ -5842,7 +5842,7 @@ SELECT ID, Name, MakeModel, TotalSeats, EconomySeats, BusinessSeats FROM Aircraf
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Module_3.Properties.Settings.Default.ConnectionStrings;
+            this._connection.ConnectionString = global::Module_3.Properties.Settings.Default.db_module3_connectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5860,7 +5860,7 @@ SELECT ID, Name, MakeModel, TotalSeats, EconomySeats, BusinessSeats FROM Aircraf
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DATABASE_DEMO.AircraftsDataTable dataTable) {
+        public virtual int Fill(Database_Module_3DataSet.AircraftsDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -5873,9 +5873,9 @@ SELECT ID, Name, MakeModel, TotalSeats, EconomySeats, BusinessSeats FROM Aircraf
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DATABASE_DEMO.AircraftsDataTable GetData() {
+        public virtual Database_Module_3DataSet.AircraftsDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DATABASE_DEMO.AircraftsDataTable dataTable = new DATABASE_DEMO.AircraftsDataTable();
+            Database_Module_3DataSet.AircraftsDataTable dataTable = new Database_Module_3DataSet.AircraftsDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -5883,14 +5883,14 @@ SELECT ID, Name, MakeModel, TotalSeats, EconomySeats, BusinessSeats FROM Aircraf
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DATABASE_DEMO.AircraftsDataTable dataTable) {
+        public virtual int Update(Database_Module_3DataSet.AircraftsDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DATABASE_DEMO dataSet) {
+        public virtual int Update(Database_Module_3DataSet dataSet) {
             return this.Adapter.Update(dataSet, "Aircrafts");
         }
         
@@ -6232,7 +6232,7 @@ SELECT ID, CountryID, IATACode, Name FROM Airports WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Module_3.Properties.Settings.Default.ConnectionStrings;
+            this._connection.ConnectionString = global::Module_3.Properties.Settings.Default.db_module3_connectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6249,7 +6249,7 @@ SELECT ID, CountryID, IATACode, Name FROM Airports WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DATABASE_DEMO.AirportsDataTable dataTable) {
+        public virtual int Fill(Database_Module_3DataSet.AirportsDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -6262,9 +6262,9 @@ SELECT ID, CountryID, IATACode, Name FROM Airports WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DATABASE_DEMO.AirportsDataTable GetData() {
+        public virtual Database_Module_3DataSet.AirportsDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DATABASE_DEMO.AirportsDataTable dataTable = new DATABASE_DEMO.AirportsDataTable();
+            Database_Module_3DataSet.AirportsDataTable dataTable = new Database_Module_3DataSet.AirportsDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -6272,14 +6272,14 @@ SELECT ID, CountryID, IATACode, Name FROM Airports WHERE (ID = @ID)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DATABASE_DEMO.AirportsDataTable dataTable) {
+        public virtual int Update(Database_Module_3DataSet.AirportsDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DATABASE_DEMO dataSet) {
+        public virtual int Update(Database_Module_3DataSet dataSet) {
             return this.Adapter.Update(dataSet, "Airports");
         }
         
@@ -6624,7 +6624,7 @@ SELECT ID, CountryID, IATACode, Name FROM Airports WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Module_3.Properties.Settings.Default.ConnectionStrings;
+            this._connection.ConnectionString = global::Module_3.Properties.Settings.Default.db_module3_connectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6641,7 +6641,7 @@ SELECT ID, CountryID, IATACode, Name FROM Airports WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DATABASE_DEMO.CabinTypesDataTable dataTable) {
+        public virtual int Fill(Database_Module_3DataSet.CabinTypesDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -6654,9 +6654,9 @@ SELECT ID, CountryID, IATACode, Name FROM Airports WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DATABASE_DEMO.CabinTypesDataTable GetData() {
+        public virtual Database_Module_3DataSet.CabinTypesDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DATABASE_DEMO.CabinTypesDataTable dataTable = new DATABASE_DEMO.CabinTypesDataTable();
+            Database_Module_3DataSet.CabinTypesDataTable dataTable = new Database_Module_3DataSet.CabinTypesDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -6664,14 +6664,14 @@ SELECT ID, CountryID, IATACode, Name FROM Airports WHERE (ID = @ID)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DATABASE_DEMO.CabinTypesDataTable dataTable) {
+        public virtual int Update(Database_Module_3DataSet.CabinTypesDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DATABASE_DEMO dataSet) {
+        public virtual int Update(Database_Module_3DataSet dataSet) {
             return this.Adapter.Update(dataSet, "CabinTypes");
         }
         
@@ -6964,7 +6964,7 @@ SELECT ID, CountryID, IATACode, Name FROM Airports WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Module_3.Properties.Settings.Default.ConnectionStrings;
+            this._connection.ConnectionString = global::Module_3.Properties.Settings.Default.db_module3_connectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6981,7 +6981,7 @@ SELECT ID, CountryID, IATACode, Name FROM Airports WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DATABASE_DEMO.CountriesDataTable dataTable) {
+        public virtual int Fill(Database_Module_3DataSet.CountriesDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -6994,9 +6994,9 @@ SELECT ID, CountryID, IATACode, Name FROM Airports WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DATABASE_DEMO.CountriesDataTable GetData() {
+        public virtual Database_Module_3DataSet.CountriesDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DATABASE_DEMO.CountriesDataTable dataTable = new DATABASE_DEMO.CountriesDataTable();
+            Database_Module_3DataSet.CountriesDataTable dataTable = new Database_Module_3DataSet.CountriesDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -7004,14 +7004,14 @@ SELECT ID, CountryID, IATACode, Name FROM Airports WHERE (ID = @ID)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DATABASE_DEMO.CountriesDataTable dataTable) {
+        public virtual int Update(Database_Module_3DataSet.CountriesDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DATABASE_DEMO dataSet) {
+        public virtual int Update(Database_Module_3DataSet dataSet) {
             return this.Adapter.Update(dataSet, "Countries");
         }
         
@@ -7322,7 +7322,7 @@ SELECT ID, CountryID, Title, Phone, Contact FROM Offices WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Module_3.Properties.Settings.Default.ConnectionStrings;
+            this._connection.ConnectionString = global::Module_3.Properties.Settings.Default.db_module3_connectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7339,7 +7339,7 @@ SELECT ID, CountryID, Title, Phone, Contact FROM Offices WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DATABASE_DEMO.OfficesDataTable dataTable) {
+        public virtual int Fill(Database_Module_3DataSet.OfficesDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -7352,9 +7352,9 @@ SELECT ID, CountryID, Title, Phone, Contact FROM Offices WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DATABASE_DEMO.OfficesDataTable GetData() {
+        public virtual Database_Module_3DataSet.OfficesDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DATABASE_DEMO.OfficesDataTable dataTable = new DATABASE_DEMO.OfficesDataTable();
+            Database_Module_3DataSet.OfficesDataTable dataTable = new Database_Module_3DataSet.OfficesDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -7362,14 +7362,14 @@ SELECT ID, CountryID, Title, Phone, Contact FROM Offices WHERE (ID = @ID)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DATABASE_DEMO.OfficesDataTable dataTable) {
+        public virtual int Update(Database_Module_3DataSet.OfficesDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DATABASE_DEMO dataSet) {
+        public virtual int Update(Database_Module_3DataSet dataSet) {
             return this.Adapter.Update(dataSet, "Offices");
         }
         
@@ -7742,7 +7742,7 @@ SELECT ID, CountryID, Title, Phone, Contact FROM Offices WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Module_3.Properties.Settings.Default.ConnectionStrings;
+            this._connection.ConnectionString = global::Module_3.Properties.Settings.Default.db_module3_connectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7759,7 +7759,7 @@ SELECT ID, CountryID, Title, Phone, Contact FROM Offices WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DATABASE_DEMO.RolesDataTable dataTable) {
+        public virtual int Fill(Database_Module_3DataSet.RolesDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -7772,9 +7772,9 @@ SELECT ID, CountryID, Title, Phone, Contact FROM Offices WHERE (ID = @ID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DATABASE_DEMO.RolesDataTable GetData() {
+        public virtual Database_Module_3DataSet.RolesDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DATABASE_DEMO.RolesDataTable dataTable = new DATABASE_DEMO.RolesDataTable();
+            Database_Module_3DataSet.RolesDataTable dataTable = new Database_Module_3DataSet.RolesDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -7782,14 +7782,14 @@ SELECT ID, CountryID, Title, Phone, Contact FROM Offices WHERE (ID = @ID)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DATABASE_DEMO.RolesDataTable dataTable) {
+        public virtual int Update(Database_Module_3DataSet.RolesDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DATABASE_DEMO dataSet) {
+        public virtual int Update(Database_Module_3DataSet dataSet) {
             return this.Adapter.Update(dataSet, "Roles");
         }
         
@@ -8066,7 +8066,7 @@ SELECT ID, CountryID, Title, Phone, Contact FROM Offices WHERE (ID = @ID)";
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DepartureAirportID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DepartureAirportID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ArrivalAirportID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ArrivalAirportID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Distance", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Distance", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FlightTime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FlightTime", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FlightTime", global::System.Data.SqlDbType.Time, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FlightTime", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Routes] ([ID], [DepartureAirportID], [ArrivalAirportID], [Distance], [FlightTime]) VALUES (@ID, @DepartureAirportID, @ArrivalAirportID, @Distance, @FlightTime);
@@ -8076,7 +8076,7 @@ SELECT ID, DepartureAirportID, ArrivalAirportID, Distance, FlightTime FROM Route
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DepartureAirportID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DepartureAirportID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ArrivalAirportID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ArrivalAirportID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Distance", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Distance", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FlightTime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FlightTime", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FlightTime", global::System.Data.SqlDbType.Time, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FlightTime", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Routes] SET [ID] = @ID, [DepartureAirportID] = @DepartureAirportID, [ArrivalAirportID] = @ArrivalAirportID, [Distance] = @Distance, [FlightTime] = @FlightTime WHERE (([ID] = @Original_ID) AND ([DepartureAirportID] = @Original_DepartureAirportID) AND ([ArrivalAirportID] = @Original_ArrivalAirportID) AND ([Distance] = @Original_Distance) AND ([FlightTime] = @Original_FlightTime));
@@ -8086,19 +8086,19 @@ SELECT ID, DepartureAirportID, ArrivalAirportID, Distance, FlightTime FROM Route
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DepartureAirportID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DepartureAirportID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ArrivalAirportID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ArrivalAirportID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Distance", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Distance", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FlightTime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FlightTime", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FlightTime", global::System.Data.SqlDbType.Time, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FlightTime", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DepartureAirportID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DepartureAirportID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ArrivalAirportID", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ArrivalAirportID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Distance", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Distance", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FlightTime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FlightTime", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FlightTime", global::System.Data.SqlDbType.Time, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FlightTime", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Module_3.Properties.Settings.Default.ConnectionStrings;
+            this._connection.ConnectionString = global::Module_3.Properties.Settings.Default.db_module3_connectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8116,7 +8116,7 @@ SELECT ID, DepartureAirportID, ArrivalAirportID, Distance, FlightTime FROM Route
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DATABASE_DEMO.RoutesDataTable dataTable) {
+        public virtual int Fill(Database_Module_3DataSet.RoutesDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -8129,9 +8129,9 @@ SELECT ID, DepartureAirportID, ArrivalAirportID, Distance, FlightTime FROM Route
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DATABASE_DEMO.RoutesDataTable GetData() {
+        public virtual Database_Module_3DataSet.RoutesDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DATABASE_DEMO.RoutesDataTable dataTable = new DATABASE_DEMO.RoutesDataTable();
+            Database_Module_3DataSet.RoutesDataTable dataTable = new Database_Module_3DataSet.RoutesDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -8139,14 +8139,14 @@ SELECT ID, DepartureAirportID, ArrivalAirportID, Distance, FlightTime FROM Route
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DATABASE_DEMO.RoutesDataTable dataTable) {
+        public virtual int Update(Database_Module_3DataSet.RoutesDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DATABASE_DEMO dataSet) {
+        public virtual int Update(Database_Module_3DataSet dataSet) {
             return this.Adapter.Update(dataSet, "Routes");
         }
         
@@ -8169,7 +8169,7 @@ SELECT ID, DepartureAirportID, ArrivalAirportID, Distance, FlightTime FROM Route
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Original_ID, string Original_DepartureAirportID, string Original_ArrivalAirportID, double Original_Distance, System.DateTime Original_FlightTime) {
+        public virtual int Delete(string Original_ID, string Original_DepartureAirportID, string Original_ArrivalAirportID, double Original_Distance, System.TimeSpan Original_FlightTime) {
             if ((Original_ID == null)) {
                 throw new global::System.ArgumentNullException("Original_ID");
             }
@@ -8189,7 +8189,7 @@ SELECT ID, DepartureAirportID, ArrivalAirportID, Distance, FlightTime FROM Route
                 this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_ArrivalAirportID));
             }
             this.Adapter.DeleteCommand.Parameters[3].Value = ((double)(Original_Distance));
-            this.Adapter.DeleteCommand.Parameters[4].Value = ((System.DateTime)(Original_FlightTime));
+            this.Adapter.DeleteCommand.Parameters[4].Value = ((System.TimeSpan)(Original_FlightTime));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -8210,7 +8210,7 @@ SELECT ID, DepartureAirportID, ArrivalAirportID, Distance, FlightTime FROM Route
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string ID, string DepartureAirportID, string ArrivalAirportID, double Distance, System.DateTime FlightTime) {
+        public virtual int Insert(string ID, string DepartureAirportID, string ArrivalAirportID, double Distance, System.TimeSpan FlightTime) {
             if ((ID == null)) {
                 throw new global::System.ArgumentNullException("ID");
             }
@@ -8230,7 +8230,7 @@ SELECT ID, DepartureAirportID, ArrivalAirportID, Distance, FlightTime FROM Route
                 this.Adapter.InsertCommand.Parameters[2].Value = ((string)(ArrivalAirportID));
             }
             this.Adapter.InsertCommand.Parameters[3].Value = ((double)(Distance));
-            this.Adapter.InsertCommand.Parameters[4].Value = ((System.DateTime)(FlightTime));
+            this.Adapter.InsertCommand.Parameters[4].Value = ((System.TimeSpan)(FlightTime));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -8251,7 +8251,7 @@ SELECT ID, DepartureAirportID, ArrivalAirportID, Distance, FlightTime FROM Route
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string ID, string DepartureAirportID, string ArrivalAirportID, double Distance, System.DateTime FlightTime, string Original_ID, string Original_DepartureAirportID, string Original_ArrivalAirportID, double Original_Distance, System.DateTime Original_FlightTime) {
+        public virtual int Update(string ID, string DepartureAirportID, string ArrivalAirportID, double Distance, System.TimeSpan FlightTime, string Original_ID, string Original_DepartureAirportID, string Original_ArrivalAirportID, double Original_Distance, System.TimeSpan Original_FlightTime) {
             if ((ID == null)) {
                 throw new global::System.ArgumentNullException("ID");
             }
@@ -8271,7 +8271,7 @@ SELECT ID, DepartureAirportID, ArrivalAirportID, Distance, FlightTime FROM Route
                 this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(ArrivalAirportID));
             }
             this.Adapter.UpdateCommand.Parameters[3].Value = ((double)(Distance));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((System.DateTime)(FlightTime));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((System.TimeSpan)(FlightTime));
             if ((Original_ID == null)) {
                 throw new global::System.ArgumentNullException("Original_ID");
             }
@@ -8291,7 +8291,7 @@ SELECT ID, DepartureAirportID, ArrivalAirportID, Distance, FlightTime FROM Route
                 this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_ArrivalAirportID));
             }
             this.Adapter.UpdateCommand.Parameters[8].Value = ((double)(Original_Distance));
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((System.DateTime)(Original_FlightTime));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((System.TimeSpan)(Original_FlightTime));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -8312,7 +8312,7 @@ SELECT ID, DepartureAirportID, ArrivalAirportID, Distance, FlightTime FROM Route
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string DepartureAirportID, string ArrivalAirportID, double Distance, System.DateTime FlightTime, string Original_ID, string Original_DepartureAirportID, string Original_ArrivalAirportID, double Original_Distance, System.DateTime Original_FlightTime) {
+        public virtual int Update(string DepartureAirportID, string ArrivalAirportID, double Distance, System.TimeSpan FlightTime, string Original_ID, string Original_DepartureAirportID, string Original_ArrivalAirportID, double Original_Distance, System.TimeSpan Original_FlightTime) {
             return this.Update(Original_ID, DepartureAirportID, ArrivalAirportID, Distance, FlightTime, Original_ID, Original_DepartureAirportID, Original_ArrivalAirportID, Original_Distance, Original_FlightTime);
         }
     }
@@ -8505,7 +8505,7 @@ SELECT ID, Date, Time, AircraftID, RouteID, FlightNumber, EconomyPrice, Confirme
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Module_3.Properties.Settings.Default.ConnectionStrings;
+            this._connection.ConnectionString = global::Module_3.Properties.Settings.Default.db_module3_connectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8523,7 +8523,7 @@ SELECT ID, Date, Time, AircraftID, RouteID, FlightNumber, EconomyPrice, Confirme
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DATABASE_DEMO.SchedulesDataTable dataTable) {
+        public virtual int Fill(Database_Module_3DataSet.SchedulesDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -8536,9 +8536,9 @@ SELECT ID, Date, Time, AircraftID, RouteID, FlightNumber, EconomyPrice, Confirme
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DATABASE_DEMO.SchedulesDataTable GetData() {
+        public virtual Database_Module_3DataSet.SchedulesDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DATABASE_DEMO.SchedulesDataTable dataTable = new DATABASE_DEMO.SchedulesDataTable();
+            Database_Module_3DataSet.SchedulesDataTable dataTable = new Database_Module_3DataSet.SchedulesDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -8546,14 +8546,14 @@ SELECT ID, Date, Time, AircraftID, RouteID, FlightNumber, EconomyPrice, Confirme
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DATABASE_DEMO.SchedulesDataTable dataTable) {
+        public virtual int Update(Database_Module_3DataSet.SchedulesDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DATABASE_DEMO dataSet) {
+        public virtual int Update(Database_Module_3DataSet dataSet) {
             return this.Adapter.Update(dataSet, "Schedules");
         }
         
@@ -9040,7 +9040,7 @@ SELECT ID, UserID, ScheduleID, CabinTypeID, Firstname, Lastname, Email, Phone, P
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Module_3.Properties.Settings.Default.ConnectionStrings;
+            this._connection.ConnectionString = global::Module_3.Properties.Settings.Default.db_module3_connectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9058,7 +9058,7 @@ SELECT ID, UserID, ScheduleID, CabinTypeID, Firstname, Lastname, Email, Phone, P
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DATABASE_DEMO.TicketsDataTable dataTable) {
+        public virtual int Fill(Database_Module_3DataSet.TicketsDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -9071,9 +9071,9 @@ SELECT ID, UserID, ScheduleID, CabinTypeID, Firstname, Lastname, Email, Phone, P
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DATABASE_DEMO.TicketsDataTable GetData() {
+        public virtual Database_Module_3DataSet.TicketsDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DATABASE_DEMO.TicketsDataTable dataTable = new DATABASE_DEMO.TicketsDataTable();
+            Database_Module_3DataSet.TicketsDataTable dataTable = new Database_Module_3DataSet.TicketsDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -9081,14 +9081,14 @@ SELECT ID, UserID, ScheduleID, CabinTypeID, Firstname, Lastname, Email, Phone, P
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DATABASE_DEMO.TicketsDataTable dataTable) {
+        public virtual int Update(Database_Module_3DataSet.TicketsDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DATABASE_DEMO dataSet) {
+        public virtual int Update(Database_Module_3DataSet dataSet) {
             return this.Adapter.Update(dataSet, "Tickets");
         }
         
@@ -9741,7 +9741,7 @@ SELECT ID, RoleID, OfficeID, Email, Password, FirstName, LastName, Birthdate, Ac
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Module_3.Properties.Settings.Default.ConnectionStrings;
+            this._connection.ConnectionString = global::Module_3.Properties.Settings.Default.db_module3_connectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9759,7 +9759,7 @@ SELECT ID, RoleID, OfficeID, Email, Password, FirstName, LastName, Birthdate, Ac
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DATABASE_DEMO.UsersDataTable dataTable) {
+        public virtual int Fill(Database_Module_3DataSet.UsersDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -9772,9 +9772,9 @@ SELECT ID, RoleID, OfficeID, Email, Password, FirstName, LastName, Birthdate, Ac
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DATABASE_DEMO.UsersDataTable GetData() {
+        public virtual Database_Module_3DataSet.UsersDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DATABASE_DEMO.UsersDataTable dataTable = new DATABASE_DEMO.UsersDataTable();
+            Database_Module_3DataSet.UsersDataTable dataTable = new Database_Module_3DataSet.UsersDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -9782,14 +9782,14 @@ SELECT ID, RoleID, OfficeID, Email, Password, FirstName, LastName, Birthdate, Ac
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DATABASE_DEMO.UsersDataTable dataTable) {
+        public virtual int Update(Database_Module_3DataSet.UsersDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(DATABASE_DEMO dataSet) {
+        public virtual int Update(Database_Module_3DataSet dataSet) {
             return this.Adapter.Update(dataSet, "Users");
         }
         
@@ -10453,7 +10453,7 @@ SELECT ID, RoleID, OfficeID, Email, Password, FirstName, LastName, Birthdate, Ac
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateUpdatedRows(DATABASE_DEMO dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(Database_Module_3DataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._countriesTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Countries.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
@@ -10553,7 +10553,7 @@ SELECT ID, RoleID, OfficeID, Email, Password, FirstName, LastName, Birthdate, Ac
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateInsertedRows(DATABASE_DEMO dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(Database_Module_3DataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._countriesTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Countries.Select(null, null, global::System.Data.DataViewRowState.Added);
@@ -10643,7 +10643,7 @@ SELECT ID, RoleID, OfficeID, Email, Password, FirstName, LastName, Birthdate, Ac
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateDeletedRows(DATABASE_DEMO dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(Database_Module_3DataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             if ((this._ticketsTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Tickets.Select(null, null, global::System.Data.DataViewRowState.Deleted);
@@ -10757,7 +10757,7 @@ SELECT ID, RoleID, OfficeID, Email, Password, FirstName, LastName, Birthdate, Ac
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public virtual int UpdateAll(DATABASE_DEMO dataSet) {
+        public virtual int UpdateAll(Database_Module_3DataSet dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }

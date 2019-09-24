@@ -110,7 +110,31 @@ namespace Module_3
                 return this.numberOfStops;
             }
         }
-
+        
+        private DateTime AddTime(DateTime dt, string t)
+        {
+            try
+            {
+                int[] time = new int[4];
+                string c = "";
+                int k = 0;
+                for (int i = 0; i < t.Length; i++)
+                    if (t[i] != ':') c = c + t[i];
+                    else
+                    {
+                        time[++k] = int.Parse(c);
+                        c = "";
+                    }
+                if (time[1]!=0) dt = dt.AddHours(time[1]);
+                if (time[2]!=0) dt = dt.AddMinutes(time[2]);
+                if (time[3]!=0) dt = dt.AddSeconds(time[3]);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error");
+            }
+            return dt;
+        }
         public frmSearchForLights()
         {
             InitializeComponent();
@@ -147,6 +171,9 @@ namespace Module_3
         }
         private void btnApply_Click(object sender, EventArgs e)
         {
+            //Clear data dgvOutboundFlight and dgvReturnFlight
+            dgvOutboundFlight.Rows.Clear();
+            dgvReturnFlight.Rows.Clear();
             // Validate parameters
             bool isError = true;
             string strError = "";
@@ -190,6 +217,7 @@ namespace Module_3
             paramSearch["FirstDate"] = firstDate.Date.ToString();
             paramSearch["LastDate"] = lastDate.Date.ToString();
             paramSearch["CabinType"] = ((CabinTypeComboBox)cbCabinType.SelectedItem).Name;
+
             List<Dictionary<string, string>> FlightsOutbound = new List<Dictionary<string, string>>();
             DBHelper dbHelper = new DBHelper();
             FlightsOutbound = dbHelper.GetFlightsWithParameters(param: paramSearch);
@@ -200,17 +228,21 @@ namespace Module_3
                 dgvOutboundFlight.Rows.Clear();
                 return;
             }*/
+            
             foreach (Dictionary<string, string> row in FlightsOutbound)
             {
                 dgvOutboundFlight.Rows.Add(row["DepartureAirportID"], row["ArrivalAirportID"], row["Date"], row["Time"], row["FlightNumber"], row["CabinType"], "0");
             }
-
+            
+            //Tìm những chuyến bay có numberOfStop >=1
             List<FlightDetail> listFlight = FindRoutes(paramSearch);
-            foreach(FlightDetail flight in listFlight)
+            foreach (FlightDetail flight in listFlight)
             {
-                dgvOutboundFlight.Rows.Add(flight.From, flight.To, flight.Date.Date.ToString(), string.Format("{0:HH:mm}", flight.Time), flight.FlightNumberToString(), flight.CabinPrice.ToString(), flight.ComputeNumberStops().ToString());
+                dgvOutboundFlight.Rows.Add(flight.From, flight.To, flight.Date.Date.ToString(), string.Format("{0:HH:mm}", flight.Time), flight.FlightNumberToString(), flight.CabinPrice.ToString(), (flight.ComputeNumberStops()-1).ToString());
             }
-
+            if (dgvOutboundFlight.Rows.Count == 1)
+                MessageBox.Show("No result!", "Notification");
+            //Console.WriteLine("count count {0}", dgvOutboundFlight.Rows.Count);
         }
 
         private void CreateDataGridView()
@@ -327,13 +359,18 @@ namespace Module_3
                     Route route = routeDAL.GetRouteWithDepartureAirportIDAndArrivalAirportID(allAirport[uu].Id, allAirport[vv].Id);
                     ScheduleDAL scheduleDAL = new ScheduleDAL();
                     List<Schedule> listScheduleWithRouteID = scheduleDAL.GetScheduleWithRouteID(route.Id);
+                    //dateMin, timeMin là date min, time min của các cạnh nối cặp định track[i] và track[i+1]
                     DateTime dateMin = DateTime.Parse("9999-12-31");
                     DateTime timeMin = DateTime.Parse("23:59:59");
                     bool check = false;
                     Schedule temp = new Schedule();
+                    //int demp = 0;
                     foreach (Schedule schedule in listScheduleWithRouteID)
                     {
-                        if (CompareDateTime(date,time,schedule.Date, schedule.Time)<=0 && CompareDateTime(dateMin,timeMin,schedule.Date, schedule.Time)<=0)
+
+                        DateTime dt = new DateTime(date.Year,date.Month,date.Day,time.Hour,time.Minute,time.Second);
+                        dt = AddTime(dt, String.Format("{0:HH:mm:ss}", route.FlightTime));  //Add flight time to dt
+                        if (CompareDateTime(dt,dt,schedule.Date, schedule.Time)<=0 && CompareDateTime(dateMin,timeMin,schedule.Date, schedule.Time)>=0)
                         {
                             dateMin = schedule.Date;
                             timeMin = schedule.Time;
@@ -341,8 +378,13 @@ namespace Module_3
                             temp = schedule;
                         }
                     }
-                    if (check)
+                    if (check) // check==true có route giữa track[i] và track[i+1] thỏa mãn điều kiện
                     {
+                        if (i == 0)
+                        {
+                            flight.Time = timeMin;
+                            flight.Date = dateMin;
+                        }
                         date = dateMin;
                         time = timeMin;
                         flight.ArrFlightNumber.Add(temp.FlightNumber);

@@ -17,7 +17,7 @@ namespace Module_3.DAL
         {
             try
             {
-                SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStrings"].ToString());
+                SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["db_module3_connectionString"].ToString());
                 sqlcon.Open();
                 string sql = "SELECT (ID, Name) FROM Countries";
                 SqlCommand cmd = new SqlCommand(sql, sqlcon);

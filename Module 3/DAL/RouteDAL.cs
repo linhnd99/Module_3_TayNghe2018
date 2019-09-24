@@ -17,7 +17,7 @@ namespace Module_3.DAL
         {
             try
             {
-                SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStrings"].ToString());
+                SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["db_module3_connectionString"].ToString());
                 sqlcon.Open();
                 string sql = "SELECT ID,DepartureAirportID, ArrivalAirportID, Distance, FlightTime FROM Routes";
                 SqlCommand cmd = new SqlCommand(sql, sqlcon);
@@ -25,10 +25,7 @@ namespace Module_3.DAL
                 List<Route> res = new List<Route>();
                 while (rd.Read())
                 {
-                    DateTime temp = Convert.ToDateTime(rd["FlightTime"]);
-                    //DateTime.ParseExact(rd["FlightTime"].ToString(), "dd/MM/yy", CultureInfo.InvariantCulture)
-                    res.Add(new Route(rd["ID"].ToString(), rd["DepartureAirportID"].ToString(), rd["ArrivalAirportID"].ToString(), Convert.ToDouble(rd["Distance"]), temp));
-                    
+                    res.Add(new Route(rd["ID"].ToString(), rd["DepartureAirportID"].ToString(), rd["ArrivalAirportID"].ToString(), Convert.ToDouble(rd["Distance"]), DateTime.ParseExact(rd["FlightTime"].ToString(),"hh:mm:ss",CultureInfo.InvariantCulture)));   
                 }
                 sqlcon.Close();
                 return res;
@@ -44,7 +41,7 @@ namespace Module_3.DAL
         {
             try
             {
-                SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStrings"].ToString());
+                SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["db_module3_connectionString"].ToString());
                 sqlcon.Open();
                 string sql = "SELECT (ID,DepartureAirportID, ArrivalAirportID, Distance, FlightTime) FROM Routes WHERE ID='" + routeID+"'";
                 SqlCommand cmd = new SqlCommand(sql, sqlcon);
@@ -52,7 +49,7 @@ namespace Module_3.DAL
                 while (rd.Read())
                 {
                     sqlcon.Close();
-                    return new Route(rd["ID"].ToString(), rd["DepartureAirportID"].ToString(), rd["ArrivalAirportID"].ToString(), Convert.ToDouble(rd["Distance"]), DateTime.ParseExact(rd["FlightTime"].ToString(), "hh:mm:ss dd/MM/yy", CultureInfo.InvariantCulture));
+                    return new Route(rd["ID"].ToString(), rd["DepartureAirportID"].ToString(), rd["ArrivalAirportID"].ToString(), Convert.ToDouble(rd["Distance"]), DateTime.ParseExact(rd["FlightTime"].ToString(), "hh:mm:ss", CultureInfo.InvariantCulture));
                 }
                 sqlcon.Close();
                 return null;
@@ -68,7 +65,7 @@ namespace Module_3.DAL
         {
             try
             {
-                SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStrings"].ToString());
+                SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["db_module3_connectionString"].ToString());
                 sqlcon.Open();
                 string sql = "SELECT ID, DepartureAirportID, ArrivalAirportID, Distance, FlightTime FROM Routes WHERE DepartureAirportID='" + departureID + "' and ArrivalAirportID='" + arrivalID+"'";
                 SqlCommand cmd = new SqlCommand(sql, sqlcon);
@@ -78,8 +75,7 @@ namespace Module_3.DAL
                 while (rd.Read())
                 {
                     //res.Add(new Route(rd["ID"].ToString(), rd["DepartureAirportID"].ToString(), rd["ArrivalAirportID"].ToString(), Convert.ToDouble(rd["Distance"]), DateTime.ParseExact(rd["FlightTime"].ToString(),"hh:mm:ss dd/MM/yy", CultureInfo.InvariantCulture)));
-                    DateTime temp = Convert.ToDateTime(rd["FlightTime"]);
-                    res = new Route(rd["ID"].ToString(), rd["DepartureAirportID"].ToString(), rd["ArrivalAirportID"].ToString(), Convert.ToDouble(rd["Distance"]), temp);
+                    res = new Route(rd["ID"].ToString(), rd["DepartureAirportID"].ToString(), rd["ArrivalAirportID"].ToString(), Convert.ToDouble(rd["Distance"]), DateTime.ParseExact(rd["FlightTime"].ToString(), "hh:mm:ss", CultureInfo.InvariantCulture));
                 }
                 sqlcon.Close();
                 return res;

@@ -69,10 +69,10 @@
     <Compile Include="DAL\DBHelper.cs" />
     <Compile Include="DAL\RouteDAL.cs" />
     <Compile Include="DAL\ScheduleDAL.cs" />
-    <Compile Include="DATABASE_DEMO.Designer.cs">
+    <Compile Include="Database_Module_3DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DATABASE_DEMO.xsd</DependentUpon>
+      <DependentUpon>Database_Module_3DataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="DTO\Aircraft.cs" />
     <Compile Include="DTO\Airport.cs" />
@@ -123,16 +123,16 @@
     <EmbeddedResource Include="GUI\Search for flights.resx">
       <DependentUpon>Search for flights.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="DATABASE_DEMO.xsc">
-      <DependentUpon>DATABASE_DEMO.xsd</DependentUpon>
+    <None Include="Database_Module_3DataSet.xsc">
+      <DependentUpon>Database_Module_3DataSet.xsd</DependentUpon>
     </None>
-    <None Include="DATABASE_DEMO.xsd">
+    <None Include="Database_Module_3DataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DATABASE_DEMO.Designer.cs</LastGenOutput>
+      <LastGenOutput>Database_Module_3DataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="DATABASE_DEMO.xss">
-      <DependentUpon>DATABASE_DEMO.xsd</DependentUpon>
+    <None Include="Database_Module_3DataSet.xss">
+      <DependentUpon>Database_Module_3DataSet.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -33,5 +33,16 @@ namespace Module_3.Properties {
                 return ((string)(this["ConnectionStrings"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-KVVMBTR\\SUDO;Initial Catalog=Database_Module_3;Integrated Sec" +
+            "urity=True")]
+        public string db_module3_connectionString {
+            get {
+                return ((string)(this["db_module3_connectionString"]));
+            }
+        }
     }
 }

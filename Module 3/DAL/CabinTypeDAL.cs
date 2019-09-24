@@ -16,7 +16,7 @@ namespace Module_3.DAL
         {
             try
             {
-                SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStrings"].ToString());
+                SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["db_module3_connectionString"].ToString());
                 sqlcon.Open();
                 string sql = "SELECT * FROM CabinTypes";
                 SqlCommand cmd = new SqlCommand(sql, sqlcon);
@@ -40,7 +40,7 @@ namespace Module_3.DAL
         {
             try
             {
-                SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStrings"].ToString());
+                SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["db_module3_connectionString"].ToString());
                 sqlcon.Open();
                 string sql = "SELECT * FROM CabinTypes WHERE ID=" + id;
                 SqlCommand cmd = new SqlCommand(sql, sqlcon);

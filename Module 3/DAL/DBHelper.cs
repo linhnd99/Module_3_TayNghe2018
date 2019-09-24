@@ -17,7 +17,7 @@ namespace Module_3.DAL
         public List<Dictionary<string,string>> GetFlightsWithParameters(Dictionary<string,string> param)
         {
             //SqlConnection sqlcon = new SqlConnection("Data Source=DESKTOP-KVVMBTR\\SUDO;Initial Catalog=database_demo;Integrated Security=True");
-            SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStrings"].ToString());
+            SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["db_module3_connectionString"].ToString());
             //System.Console.WriteLine(ConfigurationManager.ConnectionStrings["cnnString"].ToString());
             string sql =
                 "SELECT DepartureAirportID, ArrivalAirportID, Date, Time, FlightNumber, CabinTypes.Name " +

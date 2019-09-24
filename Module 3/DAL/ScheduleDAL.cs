@@ -16,7 +16,7 @@ namespace Module_3.DAL
         {
             try
             {
-                SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStrings"].ToString());
+                SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["db_module3_connectionString"].ToString());
                 sqlcon.Open();
                 string sql = "SELECT ID,Date,Time,AircraftID,RouteID,FlightNumber,EconomyPrice,Confirmed FROM Schedules";
                 SqlCommand cmd = new SqlCommand(sql, sqlcon);
@@ -41,7 +41,7 @@ namespace Module_3.DAL
         {
             try
             {
-                SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStrings"].ToString());
+                SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["db_module3_connectionString"].ToString());
                 sqlcon.Open();
                 string sql = "SELECT ID,Date,Time,AircraftID,RouteID,FlightNumber,EconomyPrice,Confirmed FROM Schedules WHERE ";
                 bool check = false;
@@ -74,7 +74,7 @@ namespace Module_3.DAL
         {
             try
             {
-                SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionStrings"].ToString());
+                SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["db_module3_connectionString"].ToString());
                 sqlcon.Open();
                 string sql = "SELECT ID, Date, Time, AircraftID, RouteID, FlightNumber, EconomyPrice, Confirmed FROM Schedules WHERE RouteID = '" + routeID+"'";
                 SqlCommand cmd = new SqlCommand(sql, sqlcon);
