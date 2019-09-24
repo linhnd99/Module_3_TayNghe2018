@@ -195,15 +195,36 @@ namespace Module_3
                 return;
             }
 
-            //Search Outbound
-            // lấy hết những Route có DepartureID và ArrivalID trùng với cbFrom và cbTo, sau đó dùng RouteID tra Schedules
-            // để lấy ra những Schedule có date phù hợp, trong đống Schedule đó dùng AircraftID tra bảng Aircrafts xem CabinType
-            // có còn chỗ hay không? trả về cho bảng Outbound thông tin của những thằng thỏa mãn điều kiện trên
-            // SELECT ArrivalID, DepartID, Date, Time, FlightNumber, CabinType FROM Routes,Schedule,Aircraft 
-            // WHERE DepartID=departID and ArrivalID=arrivalID and is(DateFromAndTo)=OK
-            // is(DateFromAndTo) = firstOutbound<=Date and Date <= lastOutbound
-            // firstOutbound = dpkOutbound.Value.AddDays(-3);
-            // lastOutbound = dpkOutbound.Value.AddDays(3);
+            
+            FnSearchOutboundFlight();
+
+            //-------------------------------------------------------------------------------------------------------------
+            //
+            //
+            //SEARCH RETURN FLIGHT
+            //
+            //
+            //-------------------------------------------------------------------------------------------------------------
+            if (rdReturn.Checked)
+            {
+                FnSearchReturnFlight();
+            }
+        }
+
+
+        //-------------------------------------------------------------------------------------------------------------
+        //SEARCH OUTBOUND FLIGHT
+        // lấy hết những Route có DepartureID và ArrivalID trùng với cbFrom và cbTo, sau đó dùng RouteID tra Schedules
+        // để lấy ra những Schedule có date phù hợp, trong đống Schedule đó dùng AircraftID tra bảng Aircrafts xem CabinType
+        // có còn chỗ hay không? trả về cho bảng Outbound thông tin của những thằng thỏa mãn điều kiện trên
+        // SELECT ArrivalID, DepartID, Date, Time, FlightNumber, CabinType FROM Routes,Schedule,Aircraft 
+        // WHERE DepartID=departID and ArrivalID=arrivalID and is(DateFromAndTo)=OK
+        // is(DateFromAndTo) = firstOutbound<=Date and Date <= lastOutbound
+        // firstOutbound = dpkOutbound.Value.AddDays(-3);
+        // lastOutbound = dpkOutbound.Value.AddDays(3);
+        //-------------------------------------------------------------------------------------------------------------
+        private void FnSearchOutboundFlight()
+        {
             Dictionary<string, string> paramSearch = new Dictionary<string, string>();
             if (cbFrom.SelectedItem != null) paramSearch["DepartureAirportID"] = ((AirportComboBox)cbFrom.SelectedItem).Id;
             if (cbTo.SelectedItem != null) paramSearch["ArrivalAirportID"] = ((AirportComboBox)cbTo.SelectedItem).Id;
@@ -222,27 +243,74 @@ namespace Module_3
             DBHelper dbHelper = new DBHelper();
             FlightsOutbound = dbHelper.GetFlightsWithParameters(param: paramSearch);
             if (FlightsOutbound == null) FlightsOutbound = new List<Dictionary<string, string>>();
-            /*if (FlightsOutbound.Count == 0)
-            {
-                MessageBox.Show("No result!", "Notification");
-                dgvOutboundFlight.Rows.Clear();
-                return;
-            }*/
-            
+
             foreach (Dictionary<string, string> row in FlightsOutbound)
             {
                 dgvOutboundFlight.Rows.Add(row["DepartureAirportID"], row["ArrivalAirportID"], row["Date"], row["Time"], row["FlightNumber"], row["CabinType"], "0");
             }
-            
+
             //Tìm những chuyến bay có numberOfStop >=1
             List<FlightDetail> listFlight = FindRoutes(paramSearch);
             foreach (FlightDetail flight in listFlight)
             {
-                dgvOutboundFlight.Rows.Add(flight.From, flight.To, flight.Date.Date.ToString(), string.Format("{0:HH:mm}", flight.Time), flight.FlightNumberToString(), flight.CabinPrice.ToString(), (flight.ComputeNumberStops()-1).ToString());
+                bool checkDate = false;
+                /*bool dbgCheck1 = (flight.Date <= dpkOutbound.Value.Date.AddDays(3).Date);
+                DateTime dbgDate1 = dpkOutbound.Value.Date.AddDays(3).Date;
+                bool dbgCheck2 = (dpkOutbound.Value.AddDays(-3).Date <= flight.Date);
+                bool dbgCheck3 = chkThreeDaysOutbound.Checked;*/
+                if (flight.Date.ToString("yyyy:MM:dd").CompareTo(dpkOutbound.Value.Date.AddDays(3).Date.ToString("yyyy:MM:dd")) <=0 && dpkOutbound.Value.AddDays(-3).Date.ToString("yyyy:MM:dd").CompareTo(flight.Date.ToString("yyyy:MM:dd"))<=0 && chkThreeDaysOutbound.Checked)
+                    checkDate = true;
+                else if (flight.Date.ToString("yyyy:MM:dd").CompareTo(dpkOutbound.Value.Date.ToString("yyyy:MM:dd"))==0 && !chkThreeDaysOutbound.Checked)
+                    checkDate = true;
+                
+                if (checkDate)
+                    dgvOutboundFlight.Rows.Add(flight.From, flight.To, flight.Date.Date.ToString("dd/MM/yyyy"), string.Format("{0:HH:mm}", flight.Time), flight.FlightNumberToString(), flight.CabinPrice.ToString(), (flight.ComputeNumberStops() - 1).ToString());
             }
             if (dgvOutboundFlight.Rows.Count == 1)
                 MessageBox.Show("No result!", "Notification");
-            //Console.WriteLine("count count {0}", dgvOutboundFlight.Rows.Count);
+        }
+
+        private void FnSearchReturnFlight()
+        {
+            Dictionary<string, string> paramSearch = new Dictionary<string, string>();
+            if (cbFrom.SelectedItem != null) paramSearch["DepartureAirportID"] = ((AirportComboBox)cbTo.SelectedItem).Id;
+            if (cbTo.SelectedItem != null) paramSearch["ArrivalAirportID"] = ((AirportComboBox)cbFrom.SelectedItem).Id;
+            DateTime firstDate = dpkReturn.Value;
+            DateTime lastDate = dpkReturn.Value;
+            if (chkThreeDaysReturn.Checked)
+            {
+                firstDate = firstDate.AddDays(-3);
+                lastDate = lastDate.AddDays(3);
+            }
+            paramSearch["FirstDate"] = firstDate.Date.ToString();
+            paramSearch["LastDate"] = lastDate.Date.ToString();
+            paramSearch["CabinType"] = ((CabinTypeComboBox)cbCabinType.SelectedItem).Name;
+
+            List<Dictionary<string, string>> FlightsReturn = new List<Dictionary<string, string>>();
+            DBHelper dbHelper = new DBHelper();
+            FlightsReturn = dbHelper.GetFlightsWithParameters(param: paramSearch);
+            if (FlightsReturn == null) FlightsReturn = new List<Dictionary<string, string>>();
+
+            foreach (Dictionary<string, string> row in FlightsReturn)
+            {
+                dgvReturnFlight.Rows.Add(row["DepartureAirportID"], row["ArrivalAirportID"], row["Date"], row["Time"], row["FlightNumber"], row["CabinType"], "0");
+            }
+
+            //Tìm những chuyến bay có numberOfStop >=1
+            List<FlightDetail> listFlight = FindRoutes(paramSearch);
+            foreach (FlightDetail flight in listFlight)
+            {
+                bool checkDate = false;
+                if (flight.Date.ToString("yyyy:MM:dd").CompareTo(dpkReturn.Value.Date.AddDays(3).Date.ToString("yyyy:MM:dd")) <= 0 && dpkReturn.Value.AddDays(-3).Date.ToString("yyyy:MM:dd").CompareTo(flight.Date.ToString("yyyy:MM:dd")) <= 0 && chkThreeDaysReturn.Checked)
+                    checkDate = true;
+                else if (flight.Date.ToString("yyyy:MM:dd").CompareTo(dpkReturn.Value.Date.ToString("yyyy:MM:dd")) == 0 && !chkThreeDaysReturn.Checked)
+                    checkDate = true;
+
+                if (checkDate)
+                    dgvReturnFlight.Rows.Add(flight.From, flight.To, flight.Date.Date.ToString("dd/MM/yyyy"), string.Format("{0:HH:mm}", flight.Time), flight.FlightNumberToString(), flight.CabinPrice.ToString(), (flight.ComputeNumberStops() - 1).ToString());
+            }
+            if (dgvReturnFlight.Rows.Count == 1)
+                MessageBox.Show("No result!", "Notification");
         }
 
         private void CreateDataGridView()
