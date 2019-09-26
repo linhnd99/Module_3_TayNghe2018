@@ -43,7 +43,7 @@ namespace Module_3.DAL
             {
                 SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["db_module3_connectionString"].ToString());
                 sqlcon.Open();
-                string sql = "SELECT (ID,DepartureAirportID, ArrivalAirportID, Distance, FlightTime) FROM Routes WHERE ID='" + routeID+"'";
+                string sql = "SELECT ID,DepartureAirportID, ArrivalAirportID, Distance, FlightTime FROM Routes WHERE ID='" + routeID+"'";
                 SqlCommand cmd = new SqlCommand(sql, sqlcon);
                 SqlDataReader rd = cmd.ExecuteReader();
                 while (rd.Read())

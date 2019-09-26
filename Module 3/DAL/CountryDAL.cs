@@ -19,7 +19,7 @@ namespace Module_3.DAL
             {
                 SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["db_module3_connectionString"].ToString());
                 sqlcon.Open();
-                string sql = "SELECT (ID, Name) FROM Countries";
+                string sql = "SELECT ID, Name FROM Countries";
                 SqlCommand cmd = new SqlCommand(sql, sqlcon);
                 SqlDataReader rd = cmd.ExecuteReader();
                 List<Country> res = new List<Country>();
