@@ -78,10 +78,12 @@
     <Compile Include="DTO\Airport.cs" />
     <Compile Include="DTO\CabinType.cs" />
     <Compile Include="DTO\Country.cs" />
+    <Compile Include="DTO\FlightDetail.cs" />
     <Compile Include="DTO\Office.cs" />
     <Compile Include="DTO\Role.cs" />
     <Compile Include="DTO\Route.cs" />
     <Compile Include="DTO\Schedule.cs" />
+    <Compile Include="DTO\SharedData.cs" />
     <Compile Include="DTO\Ticket.cs" />
     <Compile Include="DTO\User.cs" />
     <Compile Include="GUI\Billing Confirmation.cs">

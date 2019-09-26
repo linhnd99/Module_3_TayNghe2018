@@ -15,6 +15,8 @@ namespace Module_3
 {
     public partial class frmSearchForLights : Form
     {
+        private List<FlightDetail> dataTableOutboundFlight;
+        private List<FlightDetail> dataTableReturnFlight;
         private class AirportComboBox {
             string id;
             string iatacode;
@@ -53,63 +55,7 @@ namespace Module_3
             }
         }
 
-        private class FlightDetail
-        {
-            private string from;
-            private string to;
-            private DateTime date;
-            private DateTime time;
-            private string flightNumber;
-            private double cabinPrice;
-            private int numberOfStops;
-            private List<int> arrFlightNumber;
-            public FlightDetail()
-            {
-                ArrFlightNumber = new List<int>();
-            }
-            public FlightDetail(string from, string to, DateTime date, DateTime time, string flightnumber, double cabinprice, int numberofstop)
-            {
-                this.from = from;
-                this.to = to;
-                this.date = date;
-                this.time = time;
-                this.flightNumber = flightnumber;
-                this.cabinPrice = cabinprice;
-                this.numberOfStops = numberofstop;
-                ArrFlightNumber = new List<int>();
-            }
-
-            public string From { get => from; set => from = value; }
-            public string To { get => to; set => to = value; }
-            public DateTime Date { get => date; set => date = value; }
-            public DateTime Time { get => time; set => time = value; }
-            public string FlightNumber { get => flightNumber; set => flightNumber = value; }
-            public double CabinPrice { get => cabinPrice; set => cabinPrice = value; }
-            public int NumberOfStops { get => numberOfStops; set => numberOfStops = value; }
-            public List<int> ArrFlightNumber { get => arrFlightNumber; set => arrFlightNumber = value; }
-
-            public string FlightNumberToString()
-            {
-                string res = "";
-                foreach (int x in arrFlightNumber)
-                {
-                    res = res + x.ToString()+" - ";
-                }
-                if (res.Length > 3) res = res.Remove(res.Length - 3, 3);
-                else
-                {
-                    this.flightNumber = "";
-                    return "";
-                }
-                this.flightNumber = res;
-                return res;
-            }
-            public int ComputeNumberStops()
-            {
-                this.numberOfStops = arrFlightNumber.Count;
-                return this.numberOfStops;
-            }
-        }
+        
         
         private DateTime AddTime(DateTime dt, string t)
         {
@@ -251,20 +197,20 @@ namespace Module_3
 
             //Tìm những chuyến bay có numberOfStop >=1
             List<FlightDetail> listFlight = FindRoutes(paramSearch);
+            dataTableOutboundFlight = new List<FlightDetail>();
             foreach (FlightDetail flight in listFlight)
             {
                 bool checkDate = false;
-                /*bool dbgCheck1 = (flight.Date <= dpkOutbound.Value.Date.AddDays(3).Date);
-                DateTime dbgDate1 = dpkOutbound.Value.Date.AddDays(3).Date;
-                bool dbgCheck2 = (dpkOutbound.Value.AddDays(-3).Date <= flight.Date);
-                bool dbgCheck3 = chkThreeDaysOutbound.Checked;*/
                 if (flight.Date.ToString("yyyy:MM:dd").CompareTo(dpkOutbound.Value.Date.AddDays(3).Date.ToString("yyyy:MM:dd")) <=0 && dpkOutbound.Value.AddDays(-3).Date.ToString("yyyy:MM:dd").CompareTo(flight.Date.ToString("yyyy:MM:dd"))<=0 && chkThreeDaysOutbound.Checked)
                     checkDate = true;
                 else if (flight.Date.ToString("yyyy:MM:dd").CompareTo(dpkOutbound.Value.Date.ToString("yyyy:MM:dd"))==0 && !chkThreeDaysOutbound.Checked)
                     checkDate = true;
-                
+
                 if (checkDate)
+                {
                     dgvOutboundFlight.Rows.Add(flight.From, flight.To, flight.Date.Date.ToString("dd/MM/yyyy"), string.Format("{0:HH:mm}", flight.Time), flight.FlightNumberToString(), flight.CabinPrice.ToString(), (flight.ComputeNumberStops() - 1).ToString());
+                    dataTableOutboundFlight.Add(flight);
+                }
             }
             if (dgvOutboundFlight.Rows.Count == 1)
                 MessageBox.Show("No result!", "Notification");
@@ -298,6 +244,7 @@ namespace Module_3
 
             //Tìm những chuyến bay có numberOfStop >=1
             List<FlightDetail> listFlight = FindRoutes(paramSearch);
+            dataTableReturnFlight = new List<FlightDetail>();
             foreach (FlightDetail flight in listFlight)
             {
                 bool checkDate = false;
@@ -307,7 +254,10 @@ namespace Module_3
                     checkDate = true;
 
                 if (checkDate)
+                {
                     dgvReturnFlight.Rows.Add(flight.From, flight.To, flight.Date.Date.ToString("dd/MM/yyyy"), string.Format("{0:HH:mm}", flight.Time), flight.FlightNumberToString(), flight.CabinPrice.ToString(), (flight.ComputeNumberStops() - 1).ToString());
+                    dataTableReturnFlight.Add(flight);
+                }
             }
             if (dgvReturnFlight.Rows.Count == 1)
                 MessageBox.Show("No result!", "Notification");
@@ -363,10 +313,45 @@ namespace Module_3
 
         private void BtnBookingFlight_Click(object sender, EventArgs e)
         {
+            //luu gia tri FlightDetail vao SharedData de cho cac man hinh khac con dung
+            if (dgvOutboundFlight.CurrentRow == null)
+            {
+                MessageBox.Show("Outbound flight has not been selected!","Warning");
+                return;
+            }
+            if (dgvReturnFlight.CurrentRow == null && rdReturn.Checked)
+            {
+                MessageBox.Show("Outbound flight has not been selected!", "Warning");
+                return;
+            }
+            
+            if (rdReturn.Checked)
+            {
+                try
+                {
+                    SharedData.returnFlight = dataTableReturnFlight[dgvReturnFlight.CurrentRow.Index];
+                    SharedData.returnFlight.CabinType = cbCabinType.SelectedItem.ToString();
+                }
+                catch(Exception)
+                {
+                    MessageBox.Show("You must choose valid return flight!", "Warning");
+                    return;
+                }
+            }
+            try
+            {
+                SharedData.outboundFlight = dataTableOutboundFlight[dgvOutboundFlight.CurrentRow.Index];
+                SharedData.outboundFlight.CabinType = cbCabinType.SelectedItem.ToString();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("You must choose valid outbound flight!", "Warning");
+                return;
+            }
+            
+            //Chuyen sang man hinh BookingConfirmation
             frmBookingConfirmation newFrm = new frmBookingConfirmation();
-            newFrm.ShowDialog();
-            //this.Visible = false;
-
+            newFrm.ShowDialog();            
         }
 
 
@@ -497,6 +482,12 @@ namespace Module_3
                     dfs(i + 1, edge[u][j], t);
                     kt[edge[u][j]] = false;
                 }
+        }
+
+        private void RdOneWay_Click(object sender, EventArgs e)
+        {
+            //Nếu chọn radio OneWay thì dữ liệu shared của returnFlight sẽ được xóa đi (null)
+            SharedData.returnFlight = null;
         }
     }
 }

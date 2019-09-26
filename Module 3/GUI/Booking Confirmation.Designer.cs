@@ -363,9 +363,9 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(254, 65);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(83, 13);
+            this.label9.Size = new System.Drawing.Size(86, 13);
             this.label9.TabIndex = 8;
-            this.label9.Text = "Passport county";
+            this.label9.Text = "Passport country";
             // 
             // textBox6
             // 
@@ -492,6 +492,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "frmBookingConfirmation";
             this.Text = "Booking Confirmation";
+            this.Load += new System.EventHandler(this.FrmBookingConfirmation_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

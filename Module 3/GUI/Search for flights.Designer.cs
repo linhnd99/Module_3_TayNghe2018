@@ -102,6 +102,7 @@
             this.rdOneWay.TabStop = true;
             this.rdOneWay.Text = "One way";
             this.rdOneWay.UseVisualStyleBackColor = true;
+            this.rdOneWay.Click += new System.EventHandler(this.RdOneWay_Click);
             // 
             // rdReturn
             // 
