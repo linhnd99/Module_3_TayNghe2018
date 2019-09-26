@@ -51,18 +51,18 @@
             this.lblFromReturnValue = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.btnAddPassenger = new System.Windows.Forms.Button();
+            this.cbPassportCountry = new System.Windows.Forms.ComboBox();
+            this.txtPhone = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtPassportNumber = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtBirthday = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtLastname = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtFirstname = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.dgvPassgengersList = new System.Windows.Forms.DataGridView();
@@ -305,18 +305,18 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.button1);
-            this.groupBox3.Controls.Add(this.comboBox1);
-            this.groupBox3.Controls.Add(this.textBox4);
+            this.groupBox3.Controls.Add(this.btnAddPassenger);
+            this.groupBox3.Controls.Add(this.cbPassportCountry);
+            this.groupBox3.Controls.Add(this.txtPhone);
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.label9);
-            this.groupBox3.Controls.Add(this.textBox6);
+            this.groupBox3.Controls.Add(this.txtPassportNumber);
             this.groupBox3.Controls.Add(this.label11);
-            this.groupBox3.Controls.Add(this.textBox3);
+            this.groupBox3.Controls.Add(this.txtBirthday);
             this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Controls.Add(this.textBox2);
+            this.groupBox3.Controls.Add(this.txtLastname);
             this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Controls.Add(this.txtFirstname);
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Location = new System.Drawing.Point(5, 141);
             this.groupBox3.Name = "groupBox3";
@@ -325,29 +325,29 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Passenger details";
             // 
-            // button1
+            // btnAddPassenger
             // 
-            this.button1.Location = new System.Drawing.Point(576, 96);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(125, 23);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Add passenger";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAddPassenger.Location = new System.Drawing.Point(576, 96);
+            this.btnAddPassenger.Name = "btnAddPassenger";
+            this.btnAddPassenger.Size = new System.Drawing.Size(125, 23);
+            this.btnAddPassenger.TabIndex = 13;
+            this.btnAddPassenger.Text = "Add passenger";
+            this.btnAddPassenger.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // cbPassportCountry
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(344, 60);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(98, 21);
-            this.comboBox1.TabIndex = 12;
+            this.cbPassportCountry.FormattingEnabled = true;
+            this.cbPassportCountry.Location = new System.Drawing.Point(344, 60);
+            this.cbPassportCountry.Name = "cbPassportCountry";
+            this.cbPassportCountry.Size = new System.Drawing.Size(98, 21);
+            this.cbPassportCountry.TabIndex = 12;
             // 
-            // textBox4
+            // txtPhone
             // 
-            this.textBox4.Location = new System.Drawing.Point(576, 62);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(125, 20);
-            this.textBox4.TabIndex = 11;
+            this.txtPhone.Location = new System.Drawing.Point(576, 62);
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(125, 20);
+            this.txtPhone.TabIndex = 11;
             // 
             // label7
             // 
@@ -367,12 +367,12 @@
             this.label9.TabIndex = 8;
             this.label9.Text = "Passport country";
             // 
-            // textBox6
+            // txtPassportNumber
             // 
-            this.textBox6.Location = new System.Drawing.Point(114, 62);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(99, 20);
-            this.textBox6.TabIndex = 7;
+            this.txtPassportNumber.Location = new System.Drawing.Point(114, 62);
+            this.txtPassportNumber.Name = "txtPassportNumber";
+            this.txtPassportNumber.Size = new System.Drawing.Size(99, 20);
+            this.txtPassportNumber.TabIndex = 7;
             // 
             // label11
             // 
@@ -383,12 +383,12 @@
             this.label11.TabIndex = 6;
             this.label11.Text = "Passport number";
             // 
-            // textBox3
+            // txtBirthday
             // 
-            this.textBox3.Location = new System.Drawing.Point(576, 26);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(125, 20);
-            this.textBox3.TabIndex = 5;
+            this.txtBirthday.Location = new System.Drawing.Point(576, 26);
+            this.txtBirthday.Name = "txtBirthday";
+            this.txtBirthday.Size = new System.Drawing.Size(125, 20);
+            this.txtBirthday.TabIndex = 5;
             // 
             // label6
             // 
@@ -399,12 +399,12 @@
             this.label6.TabIndex = 4;
             this.label6.Text = "Birthdate";
             // 
-            // textBox2
+            // txtLastname
             // 
-            this.textBox2.Location = new System.Drawing.Point(317, 26);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(125, 20);
-            this.textBox2.TabIndex = 3;
+            this.txtLastname.Location = new System.Drawing.Point(317, 26);
+            this.txtLastname.Name = "txtLastname";
+            this.txtLastname.Size = new System.Drawing.Size(125, 20);
+            this.txtLastname.TabIndex = 3;
             // 
             // label3
             // 
@@ -415,12 +415,12 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Lastname";
             // 
-            // textBox1
+            // txtFirstname
             // 
-            this.textBox1.Location = new System.Drawing.Point(88, 26);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(125, 20);
-            this.textBox1.TabIndex = 1;
+            this.txtFirstname.Location = new System.Drawing.Point(88, 26);
+            this.txtFirstname.Name = "txtFirstname";
+            this.txtFirstname.Size = new System.Drawing.Size(125, 20);
+            this.txtFirstname.TabIndex = 1;
             // 
             // label1
             // 
@@ -530,18 +530,18 @@
         private System.Windows.Forms.Label lblFromReturnValue;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Button btnAddPassenger;
+        private System.Windows.Forms.ComboBox cbPassportCountry;
+        private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtPassportNumber;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtBirthday;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtLastname;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtFirstname;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.DataGridView dgvPassgengersList;

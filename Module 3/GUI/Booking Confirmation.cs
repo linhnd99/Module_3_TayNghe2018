@@ -14,6 +14,32 @@ namespace Module_3.GUI
 {
     public partial class frmBookingConfirmation : Form
     {
+        private class PassportCountryComboBox
+        {
+            private string id_country;
+            private string name_country;
+
+            public PassportCountryComboBox()
+            {
+            }
+            public PassportCountryComboBox(string ID, string name)
+            {
+                id_country = ID;
+                name_country = name;
+            }
+            public PassportCountryComboBox(Country x)
+            {
+                id_country = x.Id;
+                name_country = x.Name;
+            }
+            public string Id_country { get => id_country; set => id_country = value; }
+            public string Name_country { get => name_country; set => name_country = value; }
+
+            public override string ToString()
+            {
+                return name_country;
+            }
+        }
         public frmBookingConfirmation()
         {
             InitializeComponent();
@@ -21,8 +47,6 @@ namespace Module_3.GUI
 
         private void BtnBackToSearchForFlights_Click(object sender, EventArgs e)
         {
-            frmSearchForLights newFrm = new frmSearchForLights();
-            newFrm.Show();
             this.Close();
         }
 
@@ -55,6 +79,14 @@ namespace Module_3.GUI
                 lblCabinTypeReturnValue.Text = SharedData.returnFlight.CabinType;
                 lblDateReturnValue.Text = SharedData.returnFlight.Date.ToString("dd/MM/yyyy");
                 lblFlightNumberReturnValue.Text = SharedData.returnFlight.FlightNumber;
+            }
+
+            //Điền dữ liệu vào combobox Passport country
+            CountryDAL countryDAL = new CountryDAL();
+            List<Country> listCountries = countryDAL.GetAllCountries();
+            foreach (Country x in listCountries)
+            {
+                cbPassportCountry.Items.Add(new PassportCountryComboBox(x));
             }
         }
     }
