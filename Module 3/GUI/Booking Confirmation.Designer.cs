@@ -333,6 +333,7 @@
             this.btnAddPassenger.TabIndex = 13;
             this.btnAddPassenger.Text = "Add passenger";
             this.btnAddPassenger.UseVisualStyleBackColor = true;
+            this.btnAddPassenger.Click += new System.EventHandler(this.BtnAddPassenger_Click);
             // 
             // cbPassportCountry
             // 

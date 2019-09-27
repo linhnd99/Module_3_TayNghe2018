@@ -56,8 +56,25 @@ namespace Module_3.GUI
             frm2.ShowDialog();
         }
 
+        public void RemoveText(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtBirthday.Text))
+            {
+                //txtBirthday.ForeColor = Color.Gray;
+                //txtBirthday.Text = "";
+            }
+        }
+        public void AddText(object sender, EventArgs e)
+        {
+            //txtBirthday.ForeColor = Color.Black;
+            //txtBirthday.Text = "[dd/mm/yyyy]";
+        }
+
         private void FrmBookingConfirmation_Load(object sender, EventArgs e)
         {
+            //GUI
+            //txtBirthday.GotFocus += RemoveText;
+            //txtBirthday.LostFocus += AddText;
             //điền dữ liệu vào 2 group box Flight details
             lblFromOutboundValue.Text = SharedData.outboundFlight.From;
             lblToOutboundValue.Text = SharedData.outboundFlight.To;
@@ -88,6 +105,53 @@ namespace Module_3.GUI
             {
                 cbPassportCountry.Items.Add(new PassportCountryComboBox(x));
             }
+        }
+
+        private bool ValidationInput()
+        {
+            //validate empty
+            if (String.IsNullOrWhiteSpace(txtFirstname.Text) || String.IsNullOrWhiteSpace(txtLastname.Text) || String.IsNullOrWhiteSpace(txtBirthday.Text)  
+                || String.IsNullOrWhiteSpace(txtPassportNumber.Text) || String.IsNullOrWhiteSpace(txtPhone.Text) || cbPassportCountry.SelectedIndex<0)
+            {
+                MessageBox.Show("The fields is not empty!", "Warning");
+                return false;
+            }
+            //validate birthdate
+            DateTime birthdate;
+            try
+            {
+                birthdate = DateTime.Parse(txtBirthday.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Birthdate is invalid!", "Error");
+                return false;
+            }
+            //validate phone number
+            bool over = true;
+            string x = txtPhone.Text;
+            if ( ((x[0]<='9' && x[0]>='0') || x[0]=='+') == false)
+            {
+                over = false;
+            }
+            else 
+                for (int i=1;i<x.Length;i++)
+                    if (!(x[i]<='9' && x[i]>='0'))
+                    {
+                        over = false;
+                        break;
+                    }
+            if (!over)
+            {
+                MessageBox.Show("Phone number is invalid!", "Error");
+                return false;
+            }
+            return true;
+        }
+        private void BtnAddPassenger_Click(object sender, EventArgs e)
+        {
+            if (!ValidationInput())
+                return;
         }
     }
 }
