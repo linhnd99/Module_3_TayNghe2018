@@ -185,19 +185,29 @@ namespace Module_3
             paramSearch["LastDate"] = lastDate.Date.ToString();
             paramSearch["CabinType"] = ((CabinTypeComboBox)cbCabinType.SelectedItem).Name;
 
+            //Tìm những chuyến bay có numberOfStop = 0
             List<Dictionary<string, string>> FlightsOutbound = new List<Dictionary<string, string>>();
+            dataTableOutboundFlight = new List<FlightDetail>();
             DBHelper dbHelper = new DBHelper();
             FlightsOutbound = dbHelper.GetFlightsWithParameters(param: paramSearch);
             if (FlightsOutbound == null) FlightsOutbound = new List<Dictionary<string, string>>();
-
             foreach (Dictionary<string, string> row in FlightsOutbound)
             {
-                dgvOutboundFlight.Rows.Add(row["DepartureAirportID"], row["ArrivalAirportID"], row["Date"], row["Time"], row["FlightNumber"], row["CabinType"], "0");
+                dgvOutboundFlight.Rows.Add(row["DepartureAirportID"], row["ArrivalAirportID"], row["Date"], row["Time"], row["FlightNumber"], row["EconomyPrice"], "0");
+                FlightDetail fl = new FlightDetail();
+                fl.From = row["DepartureAirportID"];
+                fl.To = row["ArrivalAirportID"];
+                fl.Date = DateTime.Parse(row["Date"]);
+                fl.CabinType = row["CabinType"];
+                fl.FlightNumber = row["FlightNumber"];
+                fl.ScheduleID = new List<string>() {
+                    row["schedule_id"],
+                };
+                dataTableOutboundFlight.Add(fl);
             }
 
             //Tìm những chuyến bay có numberOfStop >=1
             List<FlightDetail> listFlight = FindRoutes(paramSearch);
-            dataTableOutboundFlight = new List<FlightDetail>();
             foreach (FlightDetail flight in listFlight)
             {
                 bool checkDate = false;
@@ -233,18 +243,29 @@ namespace Module_3
             paramSearch["CabinType"] = ((CabinTypeComboBox)cbCabinType.SelectedItem).Name;
 
             List<Dictionary<string, string>> FlightsReturn = new List<Dictionary<string, string>>();
+            dataTableReturnFlight = new List<FlightDetail>();
+
+            //Tìm những chuyến bay có numberOfStop = 0
             DBHelper dbHelper = new DBHelper();
             FlightsReturn = dbHelper.GetFlightsWithParameters(param: paramSearch);
             if (FlightsReturn == null) FlightsReturn = new List<Dictionary<string, string>>();
-
             foreach (Dictionary<string, string> row in FlightsReturn)
             {
-                dgvReturnFlight.Rows.Add(row["DepartureAirportID"], row["ArrivalAirportID"], row["Date"], row["Time"], row["FlightNumber"], row["CabinType"], "0");
+                dgvReturnFlight.Rows.Add(row["DepartureAirportID"], row["ArrivalAirportID"], row["Date"], row["Time"], row["FlightNumber"], row["EconomyPrice"], "0");
+                FlightDetail fl = new FlightDetail();
+                fl.From = row["DepartureAirportID"];
+                fl.To = row["ArrivalAirportID"];
+                fl.Date = DateTime.Parse(row["Date"]);
+                fl.CabinType = row["CabinType"];
+                fl.FlightNumber = row["FlightNumber"];
+                fl.ScheduleID = new List<string>() {
+                    row["schedule_id"],
+                };
+                dataTableReturnFlight.Add(fl);
             }
 
             //Tìm những chuyến bay có numberOfStop >=1
             List<FlightDetail> listFlight = FindRoutes(paramSearch);
-            dataTableReturnFlight = new List<FlightDetail>();
             foreach (FlightDetail flight in listFlight)
             {
                 bool checkDate = false;
@@ -441,6 +462,7 @@ namespace Module_3
                         date = dateMin;
                         time = timeMin;
                         flight.ArrFlightNumber.Add(temp.FlightNumber);
+                        flight.ScheduleID.Add(temp.Id);
                         flight.CabinPrice += temp.EconomyPrice;
                     }
                     else
@@ -488,6 +510,11 @@ namespace Module_3
         {
             //Nếu chọn radio OneWay thì dữ liệu shared của returnFlight sẽ được xóa đi (null)
             SharedData.returnFlight = null;
+        }
+
+        private void FrmSearchForLights_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

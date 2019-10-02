@@ -33,5 +33,25 @@ namespace Module_3.DTO
         public string PassportCountryID { get => passportCountryID; set => passportCountryID = value; }
         public string BookingReference { get => bookingReference; set => bookingReference = value; }
         public bool Confirmed { get => confirmed; set => confirmed = value; }
+
+        public Ticket()
+        {
+
+        }
+        public Ticket(string id, string userid, string scheduleid, string cabintypeid, string firstname, string lastname, string email, string phone, string passportnunmber, string passportidcontry, string bookingref, bool confirm)
+        {
+            this.id = id;
+            this.userID = userid;
+            this.scheduleID = scheduleid;
+            this.cabinTypeID = cabintypeid;
+            this.firstname = firstname;
+            this.lastname = lastname;
+            this.email = email;
+            this.phone = phone;
+            this.passportNumber = passportnunmber;
+            this.passportCountryID = passportidcontry;
+            this.bookingReference = bookingref;
+            this.confirmed = confirm;
+        }
     }
 }

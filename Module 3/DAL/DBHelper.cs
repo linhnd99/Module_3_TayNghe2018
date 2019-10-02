@@ -20,7 +20,7 @@ namespace Module_3.DAL
             SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["db_module3_connectionString"].ToString());
             //System.Console.WriteLine(ConfigurationManager.ConnectionStrings["cnnString"].ToString());
             string sql =
-                "SELECT DepartureAirportID, ArrivalAirportID, Date, Time, FlightNumber, CabinTypes.Name " +
+                "SELECT DepartureAirportID, ArrivalAirportID, Date, Time, FlightNumber, CabinTypes.Name, Schedules.ID as 'schedule_id', EconomyPrice " +
                 "FROM Routes inner join Schedules on Routes.ID = Schedules.RouteID " +
                 "inner join Tickets on Schedules.ID=Tickets.ScheduleID "+
                 "inner join CabinTypes on Tickets.CabinTypeID=CabinTypes.ID "+
@@ -43,10 +43,12 @@ namespace Module_3.DAL
                     Dictionary<string, string> temp = new Dictionary<string, string>();
                     temp["DepartureAirportID"] = rd["DepartureAirportID"].ToString();
                     temp["ArrivalAirportID"] = rd["ArrivalAirportID"].ToString();
-                    temp["Date"] = rd["Date"].ToString();
+                    temp["Date"] = Convert.ToDateTime(rd["Date"]).ToString("dd/MM/yyyy");
                     temp["Time"] = rd["Time"].ToString();
                     temp["FlightNumber"] = rd["FlightNumber"].ToString();
                     temp["CabinType"] = rd["Name"].ToString();
+                    temp["schedule_id"] = rd["schedule_id"].ToString();
+                    temp["EconomyPrice"] = rd["EconomyPrice"].ToString();
                     res.Add(temp);    
                 }
                 sqlcon.Close();

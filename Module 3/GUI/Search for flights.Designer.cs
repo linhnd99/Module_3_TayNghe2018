@@ -313,6 +313,7 @@
             this.MaximizeBox = false;
             this.Name = "frmSearchForLights";
             this.Text = "Search for flights";
+            this.Load += new System.EventHandler(this.FrmSearchForLights_Load);
             this.grbSearchParameters.ResumeLayout(false);
             this.grbSearchParameters.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOutboundFlight)).EndInit();

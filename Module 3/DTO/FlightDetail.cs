@@ -17,11 +17,13 @@ namespace Module_3.DTO
         private int numberOfStops;
         private string cabinType;
         private List<int> arrFlightNumber;
+        private List<string> scheduleID;
         public FlightDetail()
         {
             ArrFlightNumber = new List<int>();
+            scheduleID = new List<string>();
         }
-        public FlightDetail(string from, string to, DateTime date, DateTime time, string flightnumber, double cabinprice, string cabintype, int numberofstop)
+        public FlightDetail(string from, string to, DateTime date, DateTime time, string flightnumber, double cabinprice, string cabintype, int numberofstop, List<string> scheduleid)
         {
             this.from = from;
             this.to = to;
@@ -30,8 +32,9 @@ namespace Module_3.DTO
             this.flightNumber = flightnumber;
             this.cabinPrice = cabinprice;
             this.numberOfStops = numberofstop;
-            ArrFlightNumber = new List<int>();
-            CabinType = cabintype;
+            this.arrFlightNumber = new List<int>();
+            this.cabinType = cabintype;
+            this.ScheduleID = scheduleid;
         }
 
         public string From { get => from; set => from = value; }
@@ -43,6 +46,7 @@ namespace Module_3.DTO
         public int NumberOfStops { get => numberOfStops; set => numberOfStops = value; }
         public List<int> ArrFlightNumber { get => arrFlightNumber; set => arrFlightNumber = value; }
         public string CabinType { get => cabinType; set => cabinType = value; }
+        public List<string> ScheduleID { get => scheduleID; set => scheduleID = value; }
 
         public string FlightNumberToString()
         {

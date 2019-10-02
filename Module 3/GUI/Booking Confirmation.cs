@@ -56,20 +56,7 @@ namespace Module_3.GUI
             frm2.ShowDialog();
         }
 
-        public void RemoveText(object sender, EventArgs e)
-        {
-            if (String.IsNullOrEmpty(txtBirthday.Text))
-            {
-                //txtBirthday.ForeColor = Color.Gray;
-                //txtBirthday.Text = "";
-            }
-        }
-        public void AddText(object sender, EventArgs e)
-        {
-            //txtBirthday.ForeColor = Color.Black;
-            //txtBirthday.Text = "[dd/mm/yyyy]";
-        }
-
+       
         private void FrmBookingConfirmation_Load(object sender, EventArgs e)
         {
             //GUI
@@ -105,6 +92,42 @@ namespace Module_3.GUI
             {
                 cbPassportCountry.Items.Add(new PassportCountryComboBox(x));
             }
+
+            //định dạng output cho dpkBirhtdate 
+            dpkBirthdate.Format = DateTimePickerFormat.Custom;
+            dpkBirthdate.CustomFormat = "dd/MM/yyyy";
+
+            InitTable();
+            LoadDataTable();
+        }
+
+        private void InitTable()
+        {
+            dgvPassgengersList.ColumnCount = 6;
+            dgvPassgengersList.Columns[0].Name = "Firstname";
+            dgvPassgengersList.Columns[1].Name = "Lastname";
+            dgvPassgengersList.Columns[2].Name = "Birthdate";
+            dgvPassgengersList.Columns[3].Name = "PassportNumber";
+            dgvPassgengersList.Columns[4].Name = "PassportCountry";
+            dgvPassgengersList.Columns[5].Name = "Phone";
+            dgvPassgengersList.Columns[0].HeaderText = "Firstname";
+            dgvPassgengersList.Columns[1].HeaderText = "Lastname";
+            dgvPassgengersList.Columns[2].HeaderText = "Birthdate";
+            dgvPassgengersList.Columns[3].HeaderText = "PassportNumber";
+            dgvPassgengersList.Columns[4].HeaderText = "PassportCountry";
+            dgvPassgengersList.Columns[5].HeaderText = "Phone";
+            dgvPassgengersList.AutoResizeColumns();
+
+        }
+
+        /*lấy ra những thông tin của bản ghi có điều kiện là Tickets.ScheduleID = scheduleid(nhập vào) and
+        CabinTypeID = cabintypeid(lấy từ shareddata)
+        SELECT Tickets.ID, UserID, Fistname, Lastname, Birthdate, PassportNumber, PassportCountryID, Phone
+        FROM Users inner join Tickets on Users.ID = Tickets.UserID
+        WHERE Tickets.ScheduleID = scheduleid and CabinTypeID = cabintypeID*/
+        private void LoadDataTable()
+        {
+
         }
 
         private bool ValidationInput()
@@ -116,17 +139,7 @@ namespace Module_3.GUI
                 MessageBox.Show("The fields is not empty!", "Warning");
                 return false;
             }
-            //validate birthdate
-            DateTime birthdate;
-            try
-            {
-                birthdate = DateTime.Parse(txtBirthday.Text);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Birthdate is invalid!", "Error");
-                return false;
-            }
+
             //validate phone number
             bool over = true;
             string x = txtPhone.Text;

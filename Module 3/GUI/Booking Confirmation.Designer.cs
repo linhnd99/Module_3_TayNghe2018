@@ -58,7 +58,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtPassportNumber = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.txtBirthday = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtLastname = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -69,6 +68,7 @@
             this.btnRemovePassenger = new System.Windows.Forms.Button();
             this.btnBackToSearchForFlights = new System.Windows.Forms.Button();
             this.btnConfirmBooking = new System.Windows.Forms.Button();
+            this.dpkBirthdate = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -305,6 +305,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.dpkBirthdate);
             this.groupBox3.Controls.Add(this.btnAddPassenger);
             this.groupBox3.Controls.Add(this.cbPassportCountry);
             this.groupBox3.Controls.Add(this.txtPhone);
@@ -312,7 +313,6 @@
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.txtPassportNumber);
             this.groupBox3.Controls.Add(this.label11);
-            this.groupBox3.Controls.Add(this.txtBirthday);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.txtLastname);
             this.groupBox3.Controls.Add(this.label3);
@@ -383,13 +383,6 @@
             this.label11.Size = new System.Drawing.Size(86, 13);
             this.label11.TabIndex = 6;
             this.label11.Text = "Passport number";
-            // 
-            // txtBirthday
-            // 
-            this.txtBirthday.Location = new System.Drawing.Point(576, 26);
-            this.txtBirthday.Name = "txtBirthday";
-            this.txtBirthday.Size = new System.Drawing.Size(125, 20);
-            this.txtBirthday.TabIndex = 5;
             // 
             // label6
             // 
@@ -478,6 +471,13 @@
             this.btnConfirmBooking.UseVisualStyleBackColor = true;
             this.btnConfirmBooking.Click += new System.EventHandler(this.BtnConfirmBooking_Click);
             // 
+            // dpkBirthdate
+            // 
+            this.dpkBirthdate.Location = new System.Drawing.Point(576, 29);
+            this.dpkBirthdate.Name = "dpkBirthdate";
+            this.dpkBirthdate.Size = new System.Drawing.Size(125, 20);
+            this.dpkBirthdate.TabIndex = 14;
+            // 
             // frmBookingConfirmation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -538,7 +538,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtPassportNumber;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox txtBirthday;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtLastname;
         private System.Windows.Forms.Label label3;
@@ -549,5 +548,6 @@
         private System.Windows.Forms.Button btnRemovePassenger;
         private System.Windows.Forms.Button btnBackToSearchForFlights;
         private System.Windows.Forms.Button btnConfirmBooking;
+        private System.Windows.Forms.DateTimePicker dpkBirthdate;
     }
 }
