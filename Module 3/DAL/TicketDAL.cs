@@ -68,5 +68,4 @@ namespace Module_3.DAL
             return null;
         }
     }
-    }
 }

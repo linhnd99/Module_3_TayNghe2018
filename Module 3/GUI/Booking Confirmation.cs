@@ -98,7 +98,7 @@ namespace Module_3.GUI
             dpkBirthdate.CustomFormat = "dd/MM/yyyy";
 
             InitTable();
-            LoadDataTable();
+            //LoadDataTable();
         }
 
         private void InitTable()
@@ -125,15 +125,15 @@ namespace Module_3.GUI
         SELECT Tickets.ID, UserID, Fistname, Lastname, Birthdate, PassportNumber, PassportCountryID, Phone
         FROM Users inner join Tickets on Users.ID = Tickets.UserID
         WHERE Tickets.ScheduleID = scheduleid and CabinTypeID = cabintypeID*/
-        private void LoadDataTable()
+        /*private void LoadDataTable()
         {
 
-        }
+        }*/
 
         private bool ValidationInput()
         {
             //validate empty
-            if (String.IsNullOrWhiteSpace(txtFirstname.Text) || String.IsNullOrWhiteSpace(txtLastname.Text) || String.IsNullOrWhiteSpace(txtBirthday.Text)  
+            if (String.IsNullOrWhiteSpace(txtFirstname.Text) || String.IsNullOrWhiteSpace(txtLastname.Text)  
                 || String.IsNullOrWhiteSpace(txtPassportNumber.Text) || String.IsNullOrWhiteSpace(txtPhone.Text) || cbPassportCountry.SelectedIndex<0)
             {
                 MessageBox.Show("The fields is not empty!", "Warning");
@@ -165,6 +165,15 @@ namespace Module_3.GUI
         {
             if (!ValidationInput())
                 return;
+            Dictionary<string, string> one = new Dictionary<string, string>();
+            one["Firstname"] = txtFirstname.Text;
+            one["Lastname"] = txtLastname.Text;
+            one["Birthday"] = dpkBirthdate.Value.ToString("dd/MM/yyyy");
+            one["PassportNumber"] = txtPassportNumber.Text;
+            one["PassportCountry"] = ((PassportCountryComboBox)(cbPassportCountry.SelectedItem)).Name_country;
+            one["Phone"] = txtPhone.Text;
+            dgvPassgengersList.Rows.Add(txtFirstname.Text, txtLastname.Text, dpkBirthdate.Value.ToString("dd/MM/yyyy"), txtPassportNumber.Text,
+                ((PassportCountryComboBox)(cbPassportCountry.SelectedItem)).Name_country, txtPhone.Text);
         }
     }
 }

@@ -60,5 +60,36 @@ namespace Module_3.DAL
             }
             return null;
         }
+
+        public List<PassengerDetail> GetPassengerListWithScheduleID(string scheduleid)
+        {
+            try
+            {
+                SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["module_3_connectionString"].ToString());
+                sqlcon.Open();
+                string cabintype_name = SharedData.outboundFlight.CabinType;
+                string sql = "SELECT Tickets.ID as TicketID, UserID, Fistname, Lastname, Birthdate, PassportNumber, PassportCountryID, Phone " +
+                    "FROM Users inner join Tickets on Users.ID = Tickets.UserID  inner join CabinTypes on Tickets.CabinTypeID = CabinTypes.ID WHERE " +
+                    "Tickets.ScheduleID = '"+scheduleid+"' and CabinTypes.Name='"+ cabintype_name +"' ";
+                SqlCommand cmd = new SqlCommand(sql, sqlcon);
+                SqlDataReader rd = cmd.ExecuteReader();
+                List<PassengerDetail> res = new List<PassengerDetail>();
+                while (rd.Read())
+                {
+                    PassengerDetail temp = new PassengerDetail(rd["TicketID"].ToString(), rd["UserID"].ToString(), rd["Firstname"].ToString(),
+                        rd["Lastname"].ToString(), Convert.ToDateTime(rd["Birthdate"]),rd["PassportNumber"].ToString(), 
+                        rd["PassportCountryID"].ToString(),rd["phone"].ToString());
+
+                    res.Add(temp);
+                }
+                sqlcon.Close();
+                return res;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error");
+            }
+            return null;
+        }
     }
 }

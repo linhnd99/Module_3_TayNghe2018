@@ -69,6 +69,7 @@
     <Compile Include="DAL\DBHelper.cs" />
     <Compile Include="DAL\RouteDAL.cs" />
     <Compile Include="DAL\ScheduleDAL.cs" />
+    <Compile Include="DAL\TicketDAL.cs" />
     <Compile Include="Database_Module_3DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -80,6 +81,7 @@
     <Compile Include="DTO\Country.cs" />
     <Compile Include="DTO\FlightDetail.cs" />
     <Compile Include="DTO\Office.cs" />
+    <Compile Include="DTO\PassengerDetail.cs" />
     <Compile Include="DTO\Role.cs" />
     <Compile Include="DTO\Route.cs" />
     <Compile Include="DTO\Schedule.cs" />
